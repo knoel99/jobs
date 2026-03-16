@@ -39,9 +39,10 @@ def main():
                 "category": occ["category"],
                 "code_rome": occ["code_rome"],
                 "salaire_median_annuel": "",
-                "nombre_emplois": "",
-                "perspectives": "",
-                "perspectives_desc": "",
+                "nombre_demandeurs": "",
+                "nombre_offres": "",
+                "tension_pct": "",
+                "tension_desc": "",
                 "niveau_education": "",
                 "url": occ["url"],
             })
@@ -53,8 +54,9 @@ def main():
         score = scores.get(slug, {})
 
         salaire = row.get("salaire_median_annuel", "")
-        emplois = row.get("nombre_emplois", "")
-        perspectives = row.get("perspectives", "")
+        demandeurs = row.get("nombre_demandeurs", "")
+        offres = row.get("nombre_offres", "")
+        tension = row.get("tension_pct", "")
 
         data.append({
             "title": row["title"],
@@ -62,12 +64,14 @@ def main():
             "category": row["category"],
             "code_rome": row.get("code_rome", ""),
             "pay": int(salaire) if salaire else None,
-            "jobs": int(emplois) if emplois else None,
-            "outlook": int(perspectives) if perspectives else None,
-            "outlook_desc": row.get("perspectives_desc", ""),
+            "demandeurs": int(demandeurs) if demandeurs else None,
+            "offres": int(offres) if offres else None,
+            "tension": int(tension) if tension else None,
+            "tension_desc": row.get("tension_desc", ""),
             "education": row.get("niveau_education", ""),
             "exposure": score.get("exposure"),
             "exposure_rationale": score.get("rationale"),
+            "description": row.get("description", ""),
             "url": row.get("url", ""),
         })
 
@@ -76,9 +80,15 @@ def main():
         json.dump(data, f, ensure_ascii=False)
 
     print(f"Écrit {len(data)} métiers dans site_fr/data.json")
-    total_jobs = sum(d["jobs"] for d in data if d["jobs"])
+    with_pay = sum(1 for d in data if d["pay"])
+    with_demandeurs = sum(1 for d in data if d["demandeurs"])
+    with_offres = sum(1 for d in data if d["offres"])
+    with_tension = sum(1 for d in data if d["tension"])
     scored = sum(1 for d in data if d["exposure"] is not None)
-    print(f"Emplois totaux : {total_jobs:,}")
+    print(f"Salaires : {with_pay}/{len(data)}")
+    print(f"Demandeurs : {with_demandeurs}/{len(data)}")
+    print(f"Offres : {with_offres}/{len(data)}")
+    print(f"Tensions : {with_tension}/{len(data)}")
     print(f"Métiers scorés : {scored}/{len(data)}")
 
 

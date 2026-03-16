@@ -266,22 +266,22 @@ canvas#canvas {
 
   <div class="view-toggle">
     <button class="active" onclick="setView('treemap')">Treemap</button>
-    <button onclick="setView('scatter')">Exposition vs Perspectives</button>
+    <button onclick="setView('scatter')">Exposition vs Tension</button>
   </div>
 
   <div class="stat-section">
-    <h3>Emplois totaux</h3>
+    <h3>Demandeurs d'emploi</h3>
     <div class="stat-big" id="statTotalJobs">&mdash;</div>
   </div>
 
   <div class="stat-section">
     <h3>Exposition moyenne pondérée</h3>
     <div class="stat-big" id="statAvgExposure">&mdash;</div>
-    <div class="stat-label">pondérée par l'emploi, échelle 0-10</div>
+    <div class="stat-label">pondérée par demandeurs, échelle 0-10</div>
   </div>
 
   <div class="stat-section">
-    <h3>Emplois par exposition (pondérés)</h3>
+    <h3>Demandeurs par exposition</h3>
     <div class="histogram" id="histogram"></div>
     <div class="hist-labels"><span>0</span><span>5</span><span>10</span></div>
   </div>
@@ -351,9 +351,9 @@ function exposureColorCSS(score, alpha) {
   return `rgba(${r},${g},${b},${alpha})`;
 }
 
-function outlookColorCSS(outlook, alpha) {
-  if (outlook == null) return `rgba(128,128,128,${alpha})`;
-  const t = Math.max(0, Math.min(1, (outlook + 12) / 24));
+function tensionColorCSS(tension, alpha) {
+  if (tension == null) return `rgba(128,128,128,${alpha})`;
+  const t = Math.max(0, Math.min(1, tension / 100));
   let r, g, b;
   if (t < 0.5) {
     const s = t / 0.5;
@@ -493,8 +493,8 @@ function layout() {
 
   const categories = Object.keys(byCategory).map(cat => ({
     cat,
-    items: byCategory[cat].sort((a, b) => (b.jobs || 0) - (a.jobs || 0)),
-    value: byCategory[cat].reduce((s, d) => s + (d.jobs || 1), 0),
+    items: byCategory[cat].sort((a, b) => (b.demandeurs || 0) - (a.demandeurs || 0)),
+    value: byCategory[cat].reduce((s, d) => s + (d.demandeurs || 1), 0),
   })).sort((a, b) => b.value - a.value);
 
   const catRects = squarify(categories, tx, ty, tw, th);
@@ -502,7 +502,7 @@ function layout() {
   rects = [];
   for (const cr of catRects) {
     const innerGap = GAP;
-    const items = cr.items.map(d => ({ ...d, value: d.jobs || 1 }));
+    const items = cr.items.map(d => ({ ...d, value: d.demandeurs || 1 }));
     const innerRects = squarify(items,
       cr.rx + innerGap, cr.ry + innerGap,
       cr.rw - innerGap * 2, cr.rh - innerGap * 2
@@ -557,7 +557,7 @@ function draw() {
 
       if (rh > 34 && rw > 60) {
         const info = (r.exposure != null ? r.exposure + "/10" : "") +
-                     (r.jobs ? " \u00b7 " + formatNumber(r.jobs) + " emplois" : "");
+                     (r.demandeurs ? " \u00b7 " + formatNumber(r.demandeurs) + " DE" : "");
         ctx.font = `400 ${Math.max(8, fontSize - 2)}px -apple-system, system-ui, sans-serif`;
         ctx.fillStyle = "rgba(255,255,255,0.5)";
         ctx.fillText(info, rx + 5, ry + 4 + fontSize + 2);
@@ -613,8 +613,9 @@ function showTooltip(d, mx, my) {
 
   tt.querySelector(".tt-stats").innerHTML = `
     <span class="label">Salaire médian</span><span class="value">${formatPay(d.pay)}</span>
-    <span class="label">Emplois</span><span class="value">${formatNumber(d.jobs)}</span>
-    <span class="label">Perspectives</span><span class="value">${d.outlook != null ? d.outlook + '%' : '\u2014'} ${d.outlook_desc ? '(' + d.outlook_desc + ')' : ''}</span>
+    <span class="label">Demandeurs</span><span class="value">${formatNumber(d.demandeurs)}</span>
+    <span class="label">Offres</span><span class="value">${formatNumber(d.offres)}</span>
+    <span class="label">Tension</span><span class="value">${d.tension != null ? d.tension + '%' : '\u2014'} ${d.tension_desc ? '(' + d.tension_desc + ')' : ''}</span>
     <span class="label">Formation</span><span class="value">${d.education || '\u2014'}</span>
   `;
 
@@ -637,7 +638,7 @@ function hideTooltip() {
   document.getElementById("tooltip").classList.remove("visible");
 }
 
-// ── Column view (exposure x perspectives) ────────────────────────────
+// ── Column view (exposure x tension) ─────────────────────────────────
 
 let colRects = [];
 
@@ -662,13 +663,13 @@ function layoutColumns() {
     if (d.exposure == null) continue;
     if (!byExposure[d.exposure]) byExposure[d.exposure] = [];
     byExposure[d.exposure].push(d);
-    totalJobs += d.jobs || 0;
+    totalJobs += d.demandeurs || 0;
   }
 
   const scores = Object.keys(byExposure).map(Number).sort((a, b) => a - b);
   const numCols = scores.length;
 
-  const colJobTotals = scores.map(s => byExposure[s].reduce((sum, d) => sum + (d.jobs || 0), 0));
+  const colJobTotals = scores.map(s => byExposure[s].reduce((sum, d) => sum + (d.demandeurs || 0), 0));
   const totalGap = colGap * (numCols - 1);
   const availW = plotW - totalGap;
 
@@ -681,11 +682,11 @@ function layoutColumns() {
     const colJobs = colJobTotals[i];
     const colW = (colJobs / totalJobs) * availW;
 
-    items.sort((a, b) => (b.outlook || 0) - (a.outlook || 0));
+    items.sort((a, b) => (b.tension || 0) - (a.tension || 0));
 
     let cy = pad.top;
     for (const d of items) {
-      const jobs = d.jobs || 0;
+      const jobs = d.demandeurs || 0;
       const itemH = colJobs > 0 ? (jobs / colJobs) * plotH : 0;
       if (itemH < 0.3) { cy += itemH; continue; }
       colRects.push({ ...d, rx: cx, ry: cy, rw: colW, rh: itemH });
@@ -738,7 +739,7 @@ function drawColumns() {
     if (rw <= 0 || rh <= 0) continue;
 
     const fillAlpha = isHovered ? 0.8 : 0.5;
-    ctx.fillStyle = outlookColorCSS(r.outlook, fillAlpha);
+    ctx.fillStyle = tensionColorCSS(r.tension, fillAlpha);
     ctx.fillRect(rx, ry, rw, rh);
 
     if (isHovered) {
@@ -761,8 +762,8 @@ function drawColumns() {
       ctx.fillText(r.title, rx + 4, ry + 2);
 
       if (rh > 28 && rw > 50) {
-        const info = (r.outlook != null ? (r.outlook > 0 ? "+" : "") + r.outlook + "%" : "") +
-                     (r.jobs ? " \u00b7 " + formatNumber(r.jobs) : "");
+        const info = (r.tension != null ? "tension " + r.tension + "%" : "") +
+                     (r.demandeurs ? " \u00b7 " + formatNumber(r.demandeurs) + " DE" : "");
         ctx.font = `400 ${Math.max(7, fontSize - 2)}px -apple-system, system-ui, sans-serif`;
         ctx.fillStyle = "rgba(255,255,255,0.5)";
         ctx.fillText(info, rx + 4, ry + 2 + fontSize + 1);
@@ -789,21 +790,21 @@ function hitTestColumns(mx, my) {
 // ── Sidebar stats ──────────────────────────────────────────────────────
 
 function computeStats() {
-  const totalJobs = data.reduce((s, d) => s + (d.jobs || 0), 0);
+  const totalJobs = data.reduce((s, d) => s + (d.demandeurs || 0), 0);
 
   let weightedSum = 0, weightedCount = 0;
   for (const d of data) {
-    if (d.exposure != null && d.jobs) {
-      weightedSum += d.exposure * d.jobs;
-      weightedCount += d.jobs;
+    if (d.exposure != null && d.demandeurs) {
+      weightedSum += d.exposure * d.demandeurs;
+      weightedCount += d.demandeurs;
     }
   }
   const weightedAvg = weightedCount > 0 ? weightedSum / weightedCount : 0;
 
   const histogram = new Array(11).fill(0);
   for (const d of data) {
-    if (d.exposure != null && d.jobs) {
-      histogram[d.exposure] += d.jobs;
+    if (d.exposure != null && d.demandeurs) {
+      histogram[d.exposure] += d.demandeurs;
     }
   }
 
@@ -815,20 +816,20 @@ function computeStats() {
     { name: "Très élevée", range: [8, 10], color: exposureColorCSS(9, 1) },
   ];
   for (const tier of tiers) {
-    tier.jobs = 0;
+    tier.demandeurs = 0;
     for (const d of data) {
-      if (d.exposure != null && d.jobs &&
+      if (d.exposure != null && d.demandeurs &&
           d.exposure >= tier.range[0] && d.exposure <= tier.range[1]) {
-        tier.jobs += d.jobs;
+        tier.demandeurs += d.demandeurs;
       }
     }
-    tier.pct = totalJobs > 0 ? (tier.jobs / totalJobs * 100) : 0;
+    tier.pct = totalJobs > 0 ? (tier.demandeurs / totalJobs * 100) : 0;
   }
 
   let wagesExposed = 0;
   for (const d of data) {
-    if (d.exposure != null && d.exposure >= 7 && d.jobs && d.pay) {
-      wagesExposed += d.jobs * d.pay;
+    if (d.exposure != null && d.exposure >= 7 && d.demandeurs && d.pay) {
+      wagesExposed += d.demandeurs * d.pay;
     }
   }
 
@@ -847,7 +848,7 @@ function computeStats() {
   const histEl = document.getElementById("histogram");
   histEl.innerHTML = histogram.map((count, i) => {
     const h = maxHist > 0 ? (count / maxHist * 100) : 0;
-    return `<div class="bar" style="height:${Math.max(2, h)}%;background:${exposureColorCSS(i, 0.7)}" title="${i}: ${formatNumber(count)} emplois"></div>`;
+    return `<div class="bar" style="height:${Math.max(2, h)}%;background:${exposureColorCSS(i, 0.7)}" title="${i}: ${formatNumber(count)} demandeurs"></div>`;
   }).join("");
 
   const tierEl = document.getElementById("tierBar");
@@ -855,7 +856,7 @@ function computeStats() {
     `<div class="tier-row">
       <div class="tier-color" style="background:${t.color}"></div>
       <span class="tier-name">${t.name} (${t.range[0]}-${t.range[1]})</span>
-      <span class="tier-jobs">${formatNumber(t.jobs)}</span>
+      <span class="tier-jobs">${formatNumber(t.demandeurs)}</span>
       <span class="tier-pct">${t.pct.toFixed(0)}%</span>
     </div>`
   ).join("");
@@ -872,10 +873,10 @@ function computeStats() {
   payChartEl.innerHTML = payBands.map(band => {
     let wSum = 0, wCount = 0;
     for (const d of data) {
-      if (d.exposure != null && d.jobs && d.pay != null &&
+      if (d.exposure != null && d.demandeurs && d.pay != null &&
           d.pay >= band.min && d.pay < band.max) {
-        wSum += d.exposure * d.jobs;
-        wCount += d.jobs;
+        wSum += d.exposure * d.demandeurs;
+        wCount += d.demandeurs;
       }
     }
     const avg = wCount > 0 ? wSum / wCount : 0;
@@ -899,9 +900,9 @@ function computeStats() {
   eduChartEl.innerHTML = eduGroups.map(grp => {
     let wSum = 0, wCount = 0;
     for (const d of data) {
-      if (d.exposure != null && d.jobs && grp.match.includes(d.education)) {
-        wSum += d.exposure * d.jobs;
-        wCount += d.jobs;
+      if (d.exposure != null && d.demandeurs && grp.match.includes(d.education)) {
+        wSum += d.exposure * d.demandeurs;
+        wCount += d.demandeurs;
       }
     }
     const avg = wCount > 0 ? wSum / wCount : 0;
