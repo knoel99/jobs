@@ -49,6 +49,61 @@ L'utilisateur peut interagir avec la visualisation : survol pour voir le détail
 
 ---
 
+## Guide de lecture de la visualisation
+
+### Vue 1 : Treemap (vue par défaut)
+
+La treemap affiche chaque métier comme un **rectangle** dans une mosaïque. Deux dimensions visuelles encodent l'information :
+
+- **Taille du rectangle** = nombre de demandeurs d'emploi (catégories A+B+C). Plus le rectangle est grand, plus le métier pèse dans le marché du travail. Cela donne une lecture immédiate du « poids économique » de chaque métier.
+- **Couleur du rectangle** = score d'exposition IA (0 à 10), selon un gradient continu :
+  - **Vert foncé** (score 0-2) → exposition minimale à faible. Le métier est peu transformable par l'IA (travail physique, manuel, présence humaine requise).
+  - **Vert-jaune** (score 3-4) → exposition modérée basse. L'IA aide sur des tâches périphériques sans toucher le cœur du métier.
+  - **Orange** (score 5-6) → exposition modérée à élevée. Mix de tâches automatisables et de composante humaine irréductible.
+  - **Orange-rouge** (score 7-8) → exposition élevée à très élevée. Le métier s'exerce principalement sur ordinateur ; l'IA restructure profondément le travail.
+  - **Rouge vif** (score 9-10) → exposition maximale. Travail entièrement numérique et routinier, l'IA peut déjà effectuer la majorité des tâches.
+
+**Navigation hiérarchique (drill-down)** : la treemap est organisée selon la hiérarchie ROME :
+1. **Niveau 1 — Domaines** (lettre : A à N) : par exemple « M — Support à l'entreprise ». Chaque grand rectangle agrège tous les métiers du domaine. L'exposition affichée est la moyenne pondérée par les demandeurs d'emploi.
+2. **Niveau 2 — Sous-domaines** (3 caractères : ex. M18) : cliquer sur un domaine affiche les sous-domaines. Par exemple M18 = « Systèmes d'information et de télécommunication ».
+3. **Niveau 3 — Métiers individuels** : cliquer sur un sous-domaine affiche chaque fiche ROME individuellement.
+
+Un fil d'Ariane (breadcrumb) en haut permet de remonter dans la hiérarchie. La touche **Échap** remonte d'un niveau.
+
+**Tooltip (survol)** : au survol d'un rectangle, un encadré affiche le détail complet du métier (code ROME, score IA avec barre de progression, salaire, demandeurs, offres, tension, formation, et la justification du score IA par le LLM).
+
+**Clic sur un métier individuel** : ouvre la fiche ROME sur le site France Travail dans un nouvel onglet.
+
+### Vue 2 : Exposition vs Tension (colonnes)
+
+Accessible via le bouton « Exposition vs Tension » dans la barre latérale. Cette vue croise deux dimensions :
+
+- **Axe horizontal** = score d'exposition IA (colonnes de 0 à 10). Chaque colonne regroupe les métiers ayant le même score.
+- **Largeur de chaque colonne** = proportionnelle au nombre total de demandeurs d'emploi des métiers de ce score. Une colonne large signifie que beaucoup de demandeurs d'emploi sont concentrés à ce niveau d'exposition.
+- **Hauteur de chaque rectangle dans une colonne** = proportionnelle au nombre de demandeurs d'emploi du métier au sein de sa colonne.
+- **Couleur** = **indicateur de tension du marché** (et non plus l'exposition IA) :
+  - **Rouge** (tension 1) → marché très défavorable aux candidats (peu d'offres par rapport aux demandeurs).
+  - **Orange** (tension 2-3) → marché défavorable à neutre.
+  - **Vert** (tension 4-5) → marché favorable à très favorable aux candidats (beaucoup d'offres, peu de candidats).
+
+Cette vue permet de répondre à la question : **les métiers très exposés à l'IA sont-ils aussi ceux où le marché est favorable ou défavorable ?** Un métier très exposé (colonne de droite) mais en tension favorable (vert) indique que malgré l'IA, la demande reste forte.
+
+### Indicateurs de la barre latérale
+
+| Indicateur | Description | Calcul |
+|---|---|---|
+| **Demandeurs d'emploi** | Total des demandeurs cat. A+B+C pour le périmètre affiché | Somme des `demandeurs` des métiers filtrés |
+| **Exposition moyenne pondérée** | Score moyen d'exposition, pondéré par le nombre de demandeurs | `Σ(exposure × demandeurs) / Σ(demandeurs)` |
+| **Histogramme** | Distribution des demandeurs par score (0 à 10) | Barres verticales, hauteur = nb demandeurs à ce score |
+| **Répartition** | Demandeurs regroupés en 5 tranches d'exposition | Minimale (0-1), Faible (2-3), Modérée (4-5), Élevée (6-7), Très élevée (8-10) |
+| **Exposition par salaire** | Score moyen pondéré par bande salariale | 5 bandes : <25K, 25-35K, 35-50K, 50-75K, 75K+ |
+| **Exposition par niveau d'études** | Score moyen pondéré par niveau de formation | CAP/BEP, Bac, Bac+2, Bac+3, Bac+5/8 |
+| **Masse salariale exposée** | Volume financier des emplois très exposés | `Σ(salaire_annuel × demandeurs)` pour les métiers avec score ≥ 7 |
+
+Tous les indicateurs de la barre latérale se mettent à jour dynamiquement en fonction du niveau de drill-down (domaine, sous-domaine, ou vue globale).
+
+---
+
 ## Méthodologie
 
 Chaque métier est évalué sur une échelle de **0 à 10** mesurant dans quelle mesure l'IA va transformer le métier, en considérant :
@@ -190,9 +245,73 @@ La page calcule et affiche également :
 
 ---
 
+## Définition et source de chaque donnée affichée
+
+| Donnée | Définition | Source | Traitement appliqué |
+|---|---|---|---|
+| **Titre du métier** | Libellé officiel de la fiche ROME | API France Travail — endpoint `/rome/v1/metier` | Aucun (repris tel quel) |
+| **Code ROME** | Identifiant unique du métier (ex: M1805), composé d'une lettre (domaine) + 4 chiffres | API France Travail | Utilisé pour dériver `domain_code` (1er caractère) et `subdomain_code` (3 premiers caractères) |
+| **Domaine ROME** | Grande famille professionnelle (14 domaines : A à N) | Nomenclature ROME v4, API France Travail | Lettre extraite du code ROME ; libellé mappé via table de référence |
+| **Sous-domaine ROME** | Regroupement intermédiaire (ex: M18 = SI et télécoms) | API France Travail — champ `subdomain_code` / `subdomain_name` de `occupations_fr.json` | 3 premiers caractères du code ROME |
+| **Salaire médian annuel net** (€) | Rémunération nette annuelle moyenne du métier | API France Travail — endpoint marché du travail, rubrique `salaires.valeursParPeriode` | On extrait le code **SAL3** (salaire moyen, net mensuel) de chaque FAP (famille professionnelle) rattachée au code ROME. Si plusieurs FAP, on calcule la **moyenne arithmétique des SAL3**. Le montant mensuel est multiplié par 12 pour obtenir l'annuel. Fallback sur SAL1 (débutant) si SAL3 absent. |
+| **Salaire horaire** (€/h) | Salaire horaire net calculé | Dérivé du salaire annuel | `salaire_annuel / 1607` (durée légale annuelle de travail en France) |
+| **Nombre de demandeurs d'emploi** | Demandeurs d'emploi inscrits en catégories A+B+C (DEFM) pour ce métier | API France Travail — rubrique `demandeurs.listeValeursParPeriode`, code nomenclature **ABC** | On prend la valeur de la ligne `ABC` (A = sans emploi, B = activité réduite courte, C = activité réduite longue). Fallback sur catégorie A seule si ABC absent. |
+| **Nombre d'offres d'emploi** | Total des offres d'emploi publiées pour ce métier | API France Travail — rubrique `offres.listeValeursParPeriode` | Somme de toutes les périodes retournées par l'API |
+| **Indicateur de tension** (1 à 5) | Perspectives du marché du travail pour les candidats | API France Travail — rubrique `tensions.listeValeursParPeriode`, code nomenclature **PERSPECTIVE** | Rang de 1 à 5. Mapping : 1 = Très défavorable, 2 = Défavorable, 3 = Neutre, 4 = Favorable, 5 = Très favorable. Fallback sur **INT_EMB** (intensité d'embauche) si PERSPECTIVE absent. |
+| **Niveau d'éducation requis** | Formation minimale typiquement requise pour accéder au métier | API France Travail — champ `metier.accesEmploi` de la fiche ROME | Extraction par mots-clés dans le texte libre d'accès à l'emploi : recherche hiérarchique du plus haut au plus bas (Doctorat → Master/Ingénieur → Licence → BTS/DUT → Bac → CAP/BEP). Le premier niveau trouvé dans le texte est retenu. |
+| **Description du métier** | Définition textuelle du métier | API France Travail — champ `metier.definition` | Reprise telle quelle |
+| **Score d'exposition IA** (0-10) | Évaluation de l'impact potentiel de l'IA sur le métier | **Calculé par LLM** — Gemini Flash (via OpenRouter) | Chaque fiche métier (définition, compétences, conditions d'accès, contextes de travail) est envoyée au LLM avec un prompt expert calibré. Le modèle retourne un score entier de 0 à 10 et une justification en français. Temperature = 0.2 pour la reproductibilité. |
+| **Justification du score** | Explication en 2-3 phrases des facteurs ayant déterminé le score | **Générée par LLM** — même appel que le score | Le LLM justifie en citant les facteurs clés : nature numérique/physique du travail, tâches automatisables, barrières à l'IA |
+| **Exposition moyenne pondérée** | Score synthétique pour un groupe de métiers | Calculé dans le frontend | `Σ(score × demandeurs) / Σ(demandeurs)` — pondération par le poids dans l'emploi |
+| **Masse salariale exposée** | Volume financier annuel des emplois très exposés à l'IA | Calculé dans le frontend | `Σ(salaire_annuel × demandeurs)` pour les métiers avec score ≥ 7, affiché en milliards d'euros (Md€) |
+
+---
+
+## Pipeline de traitement détaillé
+
+### Étape 1 — Collecte : `fetch_all_rome.py`
+Récupère la liste exhaustive des fiches ROME via l'API France Travail (`/rome/v1/metier`). Produit `occupations_fr.json` contenant pour chaque métier : titre, slug, code ROME, catégorie, URL de la fiche, codes et noms de domaine/sous-domaine.
+
+### Étape 2 — Scraping des données marché : `scrape_fr.py`
+Pour chaque métier de `occupations_fr.json`, interroge l'API REST France Travail (authentification OAuth2, refresh automatique du token avant expiration ~1500s) pour récupérer les données statistiques du marché du travail : salaires, demandeurs d'emploi, offres, tensions de recrutement. Les réponses JSON brutes sont stockées dans `html_fr/<slug>.json`. Le cache empêche de re-télécharger les fichiers existants (reprise incrémentale).
+
+### Étape 3 — Structuration CSV : `make_csv_fr.py`
+Parse les fichiers JSON de `html_fr/` et extrait les champs structurés :
+- **Salaire** : extraction du code SAL3 (moyenne des FAP), conversion mensuel→annuel (×12) et calcul du taux horaire (÷1607h)
+- **Demandeurs** : extraction du code ABC (catégories A+B+C)
+- **Offres** : somme de toutes les périodes
+- **Tension** : extraction du code PERSPECTIVE (rang 1-5)
+- **Éducation** : analyse textuelle du champ `accesEmploi` (recherche hiérarchique de mots-clés)
+- **Description** : champ `metier.definition`
+
+Produit `occupations_fr.csv`.
+
+### Étape 4 — Scoring IA : `score_fr.py`
+Envoie chaque fiche métier (définition + compétences + contexte) au LLM Gemini Flash via OpenRouter. Le prompt système est calibré avec des repères français (exemples de métiers français, mention du contexte réglementaire CDI/conventions collectives). Le scoring est :
+- **Asynchrone** avec concurrence configurable (défaut : 5 requêtes parallèles)
+- **Incrémental** : checkpoint toutes les 10 évaluations dans `scores_fr.json`
+- **Reproductible** : temperature=0.2
+- **Résilient** : retry exponentiel (2s, 4s, 8s, 16s) sur erreurs HTTP 429/403/502/503
+
+Produit `scores_fr.json`.
+
+### Étape 5 — Fusion : `build_site_data_fr.py`
+Fusionne `occupations_fr.csv` (stats marché) + `scores_fr.json` (exposition IA) + `occupations_fr.json` (hiérarchie ROME). Pour chaque métier, assemble un objet JSON compact avec tous les champs nécessaires au frontend. Produit `site_fr/data.json`.
+
+### Étape 6 — Visualisation : `site_fr/index.html`
+Application HTML/CSS/JS vanilla (sans framework ni dépendance). Charge `data.json`, construit la hiérarchie ROME en mémoire, et rend une treemap squarifiée sur canvas. Le gradient de couleur est calculé par une fonction continue `exposureColor(score)` qui interpole RGB :
+- Score 0 → `rgb(50, 160, 50)` (vert)
+- Score 5 → `rgb(230, 150, 30)` (orange)
+- Score 10 → `rgb(255, 40, 20)` (rouge)
+
+---
+
 ## Limites
 
 - **Panel de 61 métiers** sur les ~530 fiches ROME existantes — représentatif mais non exhaustif
 - Le scoring repose sur un **modèle de langage unique** (Gemini Flash) avec un prompt calibré — un autre modèle ou prompt pourrait produire des scores légèrement différents
 - Les données salariales et d'emploi proviennent de l'API France Travail et reflètent un **instantané** du marché, pas une tendance
 - L'exposition mesure le **potentiel technique** de transformation, pas la vitesse réelle d'adoption (qui dépend du droit du travail, des conventions collectives, de l'acceptation sociale)
+- Les **salaires** sont des moyennes par FAP (famille professionnelle), pas des médianes strictes par métier ROME — un même code ROME peut couvrir plusieurs FAP avec des rémunérations différentes
+- Le **niveau d'éducation** est extrait par analyse de mots-clés dans un texte libre, ce qui peut manquer des nuances (ex: « accessible sans diplôme avec expérience » → classé CAP/BEP)
+- L'indicateur de **tension** est un rang ordinal (1-5), pas un ratio précis offres/demandeurs
