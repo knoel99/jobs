@@ -102,9 +102,8 @@ def get_access_token():
             "client_secret": client_secret,
             "scope": " ".join([
                 "api_rome-metiersv1",
-                "api_rome-fichesv1",
+                "api_rome-fiches-metiersv1",
                 "api_rome-competencesv1",
-                "api_marchedutravailv1",
                 "nomenclatureRome",
             ]),
         },
@@ -124,9 +123,9 @@ def scrape_api(occupations, args):
     client = httpx.Client()
     headers = {"Authorization": f"Bearer {token}", "Accept": "application/json"}
 
-    print(f"\nRate limits : ROME=1 req/s, Marché du travail=10 req/s")
-    print(f"Temps estimé : ~{len(occupations) * 3.5:.0f}s "
-          f"({len(occupations)} métiers × ~3.5s/métier)\n")
+    print(f"\nRate limits : ROME APIs = 1 req/s chacune")
+    print(f"Temps estimé : ~{len(occupations) * 2.5:.0f}s "
+          f"({len(occupations)} métiers × ~2.5s/métier)\n")
 
     for i, occ in enumerate(occupations):
         slug = occ["slug"]
@@ -142,10 +141,10 @@ def scrape_api(occupations, args):
         try:
             result = {}
 
-            # 1. Fiche métier (ROME Fiches : 1 req/s)
+            # 1. Fiche métier complète (ROME Fiches métiers : 1 req/s)
             resp = api_call_with_retry(
                 client,
-                f"https://api.francetravail.io/partenaire/rome-fiches/v1/fichemetier/{code}",
+                f"https://api.francetravail.io/partenaire/rome-fiches-metiers/v1/fiches_metiers/fiche_metier/{code}",
                 headers, "rome_fiches",
             )
             if resp:
@@ -159,15 +158,6 @@ def scrape_api(occupations, args):
             )
             if resp:
                 result["metier"] = resp.json()
-
-            # 3. Stats marché du travail (10 req/s — plus rapide)
-            resp = api_call_with_retry(
-                client,
-                f"https://api.francetravail.io/partenaire/marche-travail/v1/statistiques/rome/{code}",
-                headers, "marche_travail",
-            )
-            if resp:
-                result["marche"] = resp.json()
 
             with open(out_path, "w") as f:
                 json.dump(result, f, ensure_ascii=False, indent=2)
