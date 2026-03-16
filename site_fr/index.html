@@ -207,6 +207,41 @@ canvas#canvas {
   cursor: default;
 }
 
+#breadcrumb {
+  position: fixed;
+  top: 8px;
+  left: calc(var(--sidebar-w) + 12px);
+  z-index: 15;
+  display: none;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+.bread-btn {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 4px;
+  color: var(--fg2);
+  cursor: pointer;
+  font-size: 11px;
+  padding: 4px 10px;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+.bread-btn:hover {
+  background: rgba(255,255,255,0.15);
+  color: var(--fg);
+}
+.bread-sep {
+  color: var(--fg2);
+  font-size: 14px;
+}
+.bread-current {
+  color: var(--fg);
+  font-size: 11px;
+  font-weight: 500;
+}
+
 #tooltip {
   position: fixed;
   pointer-events: none;
@@ -270,8 +305,9 @@ canvas#canvas {
   </div>
 
   <div class="stat-section">
-    <h3>Demandeurs d'emploi</h3>
+    <h3 id="statScopeLabel">Demandeurs d'emploi</h3>
     <div class="stat-big" id="statTotalJobs">&mdash;</div>
+    <div class="stat-label" id="statScopeDesc"></div>
   </div>
 
   <div class="stat-section">
@@ -314,6 +350,8 @@ canvas#canvas {
   </div>
 </div>
 
+<div id="breadcrumb"></div>
+
 <canvas id="canvas"></canvas>
 
 <div id="tooltip">
@@ -353,7 +391,7 @@ function exposureColorCSS(score, alpha) {
 
 function tensionColorCSS(tension, alpha) {
   if (tension == null) return `rgba(128,128,128,${alpha})`;
-  const t = Math.max(0, Math.min(1, (tension - 1) / 4));  // rang 1-5 → 0-1
+  const t = Math.max(0, Math.min(1, (tension - 1) / 4));
   let r, g, b;
   if (t < 0.5) {
     const s = t / 0.5;
@@ -446,12 +484,34 @@ function worstAspect(row, rowSum, side, totalArea, availableExtent) {
   return worst;
 }
 
-// ── Rendering ──────────────────────────────────────────────────────────
+// ── ROME hierarchy ─────────────────────────────────────────────────────
+
+const ROME_DOMAINS = {
+  'A': 'Agriculture, Pêche, Espaces naturels',
+  'B': 'Arts et Façonnage d\'ouvrages d\'art',
+  'C': 'Banque, Assurance, Immobilier',
+  'D': 'Commerce, Vente, Grande distribution',
+  'E': 'Communication, Média, Multimédia',
+  'F': 'Construction, Bâtiment, Travaux publics',
+  'G': 'Hôtellerie-Restauration, Tourisme, Loisirs',
+  'H': 'Industrie',
+  'I': 'Installation et Maintenance',
+  'J': 'Santé',
+  'K': 'Services à la personne et à la collectivité',
+  'L': 'Spectacle',
+  'M': 'Support à l\'entreprise',
+  'N': 'Transport et Logistique',
+};
 
 let data = [];
 let rects = [];
 let hovered = null;
 let currentView = "treemap";
+
+// Drill-down state: [] = domains, ["M"] = subdomains, ["M","M18"] = jobs
+let drillPath = [];
+let domainNames = {};
+let subdomainNames = {};
 
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
@@ -459,6 +519,93 @@ let dpr = window.devicePixelRatio || 1;
 
 const MARGIN = 12;
 const GAP = 1.5;
+
+function buildHierarchyMaps() {
+  for (const d of data) {
+    // Derive codes from code_rome if not set
+    if (!d.domain_code && d.code_rome) d.domain_code = d.code_rome[0];
+    if (!d.subdomain_code && d.code_rome && d.code_rome.length >= 3) {
+      d.subdomain_code = d.code_rome.substring(0, 3);
+    }
+    // Build name maps
+    if (d.domain_code) {
+      if (d.domain_name) domainNames[d.domain_code] = d.domain_name;
+      else if (!domainNames[d.domain_code]) domainNames[d.domain_code] = ROME_DOMAINS[d.domain_code] || d.domain_code;
+    }
+    if (d.subdomain_code && d.subdomain_name) {
+      subdomainNames[d.subdomain_code] = d.subdomain_name;
+    }
+  }
+}
+
+function getFilteredData() {
+  if (drillPath.length === 0) return data;
+  if (drillPath.length === 1) return data.filter(d => d.domain_code === drillPath[0]);
+  return data.filter(d => d.subdomain_code === drillPath[1]);
+}
+
+function weightedExposure(items) {
+  let wSum = 0, wCount = 0;
+  for (const d of items) {
+    if (d.exposure != null) {
+      const w = d.demandeurs || 1;
+      wSum += d.exposure * w;
+      wCount += w;
+    }
+  }
+  return wCount > 0 ? Math.round(wSum / wCount * 10) / 10 : null;
+}
+
+// ── Navigation ─────────────────────────────────────────────────────────
+
+function drillDown(key) {
+  drillPath.push(key);
+  hovered = null;
+  hideTooltip();
+  updateBreadcrumb();
+  computeStats();
+  resize();
+}
+
+function drillUp(level) {
+  drillPath = drillPath.slice(0, level);
+  hovered = null;
+  hideTooltip();
+  updateBreadcrumb();
+  computeStats();
+  resize();
+}
+
+function updateBreadcrumb() {
+  const el = document.getElementById("breadcrumb");
+  if (drillPath.length === 0) {
+    el.style.display = "none";
+    return;
+  }
+  el.style.display = "flex";
+
+  let html = '<button class="bread-btn" onclick="drillUp(0)">\u25C2 Tous les domaines</button>';
+
+  if (drillPath.length >= 1) {
+    const dName = domainNames[drillPath[0]] || drillPath[0];
+    html += '<span class="bread-sep">\u203A</span>';
+    if (drillPath.length > 1) {
+      html += `<button class="bread-btn" onclick="drillUp(1)">${dName}</button>`;
+    } else {
+      html += `<span class="bread-current">${dName}</span>`;
+    }
+  }
+
+  if (drillPath.length >= 2) {
+    const sName = subdomainNames[drillPath[1]] || drillPath[1];
+    html += '<span class="bread-sep">\u203A</span>';
+    html += `<span class="bread-current">${sName}</span>`;
+  }
+
+  el.innerHTML = html;
+}
+
+// ── Rendering ──────────────────────────────────────────────────────────
 
 function setView(view) {
   currentView = view;
@@ -479,37 +626,45 @@ function layout() {
   canvas.style.width = w + "px";
   canvas.style.height = h + "px";
 
+  const breadcrumbH = drillPath.length > 0 ? 36 : 0;
   const tx = MARGIN;
-  const ty = MARGIN;
+  const ty = MARGIN + breadcrumbH;
   const tw = w - MARGIN * 2;
-  const th = h - MARGIN * 2;
+  const th = h - MARGIN * 2 - breadcrumbH;
 
-  const byCategory = {};
-  for (const d of data) {
-    const cat = d.category;
-    if (!byCategory[cat]) byCategory[cat] = [];
-    byCategory[cat].push(d);
-  }
+  if (drillPath.length < 2) {
+    // Aggregate view: domains (level 0) or subdomains (level 1)
+    const filtered = getFilteredData();
+    const groupKey = drillPath.length === 0 ? 'domain_code' : 'subdomain_code';
+    const nameMap = drillPath.length === 0 ? domainNames : subdomainNames;
 
-  const categories = Object.keys(byCategory).map(cat => ({
-    cat,
-    items: byCategory[cat].sort((a, b) => (b.demandeurs || 0) - (a.demandeurs || 0)),
-    value: byCategory[cat].reduce((s, d) => s + (d.demandeurs || 1), 0),
-  })).sort((a, b) => b.value - a.value);
-
-  const catRects = squarify(categories, tx, ty, tw, th);
-
-  rects = [];
-  for (const cr of catRects) {
-    const innerGap = GAP;
-    const items = cr.items.map(d => ({ ...d, value: d.demandeurs || 1 }));
-    const innerRects = squarify(items,
-      cr.rx + innerGap, cr.ry + innerGap,
-      cr.rw - innerGap * 2, cr.rh - innerGap * 2
-    );
-    for (const ir of innerRects) {
-      rects.push(ir);
+    const byGroup = {};
+    for (const d of filtered) {
+      const key = d[groupKey] || 'other';
+      if (!byGroup[key]) byGroup[key] = [];
+      byGroup[key].push(d);
     }
+
+    const items = Object.entries(byGroup).map(([code, jobs]) => ({
+      isAggregate: true,
+      drillKey: code,
+      title: nameMap[code] || code,
+      code_rome: code,
+      exposure: weightedExposure(jobs),
+      demandeurs: jobs.reduce((s, j) => s + (j.demandeurs || 0), 0),
+      offres: jobs.reduce((s, j) => s + (j.offres || 0), 0),
+      jobCount: jobs.length,
+      value: jobs.reduce((s, j) => s + (j.demandeurs || 1), 0),
+    })).sort((a, b) => b.value - a.value);
+
+    rects = squarify(items, tx, ty, tw, th);
+  } else {
+    // Individual jobs within a subdomain
+    const filtered = getFilteredData();
+    const items = filtered
+      .map(d => ({ ...d, value: d.demandeurs || 1 }))
+      .sort((a, b) => b.value - a.value);
+    rects = squarify(items, tx, ty, tw, th);
   }
 }
 
@@ -541,26 +696,50 @@ function draw() {
       ctx.strokeRect(rx, ry, rw, rh);
     }
 
-    const minW = 50;
-    const minH = 18;
+    // Aggregate indicator: subtle dashed border
+    if (r.isAggregate && !isHovered) {
+      ctx.strokeStyle = "rgba(255,255,255,0.15)";
+      ctx.lineWidth = 1;
+      ctx.setLineDash([4, 3]);
+      ctx.strokeRect(rx, ry, rw, rh);
+      ctx.setLineDash([]);
+    }
+
+    const minW = r.isAggregate ? 60 : 50;
+    const minH = r.isAggregate ? 22 : 18;
     if (rw > minW && rh > minH) {
       ctx.save();
       ctx.beginPath();
       ctx.rect(rx + 4, ry + 2, rw - 8, rh - 4);
       ctx.clip();
 
-      const fontSize = Math.min(13, Math.max(9, Math.min(rw / 10, rh / 3)));
-      ctx.font = `500 ${fontSize}px -apple-system, system-ui, sans-serif`;
+      const fontSize = Math.min(14, Math.max(9, Math.min(rw / 10, rh / 3)));
+      ctx.font = `${r.isAggregate ? 600 : 500} ${fontSize}px -apple-system, system-ui, sans-serif`;
       ctx.fillStyle = isHovered ? "#fff" : "rgba(255,255,255,0.85)";
       ctx.textBaseline = "top";
       ctx.fillText(r.title, rx + 5, ry + 4);
 
       if (rh > 34 && rw > 60) {
-        const info = (r.exposure != null ? r.exposure + "/10" : "") +
-                     (r.demandeurs ? " \u00b7 " + formatNumber(r.demandeurs) + " DE" : "");
+        let info;
+        if (r.isAggregate) {
+          info = r.jobCount + " métiers";
+          if (r.exposure != null) info += " \u00b7 moy. " + r.exposure.toFixed(1) + "/10";
+          if (r.demandeurs) info += " \u00b7 " + formatNumber(r.demandeurs) + " DE";
+        } else {
+          info = (r.exposure != null ? r.exposure + "/10" : "") +
+                 (r.demandeurs ? " \u00b7 " + formatNumber(r.demandeurs) + " DE" : "");
+        }
         ctx.font = `400 ${Math.max(8, fontSize - 2)}px -apple-system, system-ui, sans-serif`;
         ctx.fillStyle = "rgba(255,255,255,0.5)";
         ctx.fillText(info, rx + 5, ry + 4 + fontSize + 2);
+      }
+
+      // Drill indicator for aggregates
+      if (r.isAggregate && rw > 80 && rh > 50) {
+        ctx.font = `400 ${Math.max(8, fontSize - 2)}px -apple-system, system-ui, sans-serif`;
+        ctx.fillStyle = "rgba(255,255,255,0.25)";
+        ctx.textBaseline = "bottom";
+        ctx.fillText("cliquer pour explorer \u25B8", rx + 5, ry + rh - 4);
       }
 
       ctx.restore();
@@ -597,30 +776,52 @@ function showTooltip(d, mx, my) {
   const tt = document.getElementById("tooltip");
 
   tt.querySelector(".tt-title").textContent = d.title;
-  tt.querySelector(".tt-code").textContent = d.code_rome ? `Code ROME : ${d.code_rome}` : "";
 
-  const score = d.exposure != null ? d.exposure : null;
-  if (score != null) {
-    const barWidth = score * 10;
-    const color = exposureColorCSS(score, 1);
-    tt.querySelector(".tt-exposure").innerHTML =
-      `<span style="color:${color};font-weight:600;">Exposition IA : ${score}/10</span>` +
-      `<div style="margin-top:3px;height:4px;background:rgba(255,255,255,0.08);border-radius:2px;">` +
-      `<div style="height:100%;width:${barWidth}%;background:${color};border-radius:2px;"></div></div>`;
+  if (d.isAggregate) {
+    tt.querySelector(".tt-code").textContent = `Code ${d.code_rome} \u00b7 ${d.jobCount} métiers`;
+
+    const score = d.exposure;
+    if (score != null) {
+      const barWidth = score * 10;
+      const color = exposureColorCSS(score, 1);
+      tt.querySelector(".tt-exposure").innerHTML =
+        `<span style="color:${color};font-weight:600;">Exposition moyenne : ${score.toFixed(1)}/10</span>` +
+        `<div style="margin-top:3px;height:4px;background:rgba(255,255,255,0.08);border-radius:2px;">` +
+        `<div style="height:100%;width:${barWidth}%;background:${color};border-radius:2px;"></div></div>`;
+    } else {
+      tt.querySelector(".tt-exposure").innerHTML = "";
+    }
+
+    tt.querySelector(".tt-stats").innerHTML = `
+      <span class="label">Demandeurs</span><span class="value">${formatNumber(d.demandeurs)}</span>
+      <span class="label">Offres</span><span class="value">${formatNumber(d.offres)}</span>
+    `;
+    tt.querySelector(".tt-rationale").textContent = "Cliquer pour explorer les métiers";
   } else {
-    tt.querySelector(".tt-exposure").innerHTML = "";
+    tt.querySelector(".tt-code").textContent = d.code_rome ? `Code ROME : ${d.code_rome}` : "";
+
+    const score = d.exposure != null ? d.exposure : null;
+    if (score != null) {
+      const barWidth = score * 10;
+      const color = exposureColorCSS(score, 1);
+      tt.querySelector(".tt-exposure").innerHTML =
+        `<span style="color:${color};font-weight:600;">Exposition IA : ${score}/10</span>` +
+        `<div style="margin-top:3px;height:4px;background:rgba(255,255,255,0.08);border-radius:2px;">` +
+        `<div style="height:100%;width:${barWidth}%;background:${color};border-radius:2px;"></div></div>`;
+    } else {
+      tt.querySelector(".tt-exposure").innerHTML = "";
+    }
+
+    tt.querySelector(".tt-stats").innerHTML = `
+      <span class="label">Salaire médian</span><span class="value">${formatPay(d.pay)}</span>
+      <span class="label">Demandeurs</span><span class="value">${formatNumber(d.demandeurs)}</span>
+      <span class="label">Offres</span><span class="value">${formatNumber(d.offres)}</span>
+      <span class="label">Tension</span><span class="value">${d.tension != null ? d.tension + '/5' : '\u2014'} ${d.tension_desc ? '(' + d.tension_desc + ')' : ''}</span>
+      <span class="label">Formation</span><span class="value">${d.education || '\u2014'}</span>
+    `;
+
+    tt.querySelector(".tt-rationale").textContent = d.exposure_rationale || "";
   }
-
-  tt.querySelector(".tt-stats").innerHTML = `
-    <span class="label">Salaire médian</span><span class="value">${formatPay(d.pay)}</span>
-    <span class="label">Demandeurs</span><span class="value">${formatNumber(d.demandeurs)}</span>
-    <span class="label">Offres</span><span class="value">${formatNumber(d.offres)}</span>
-    <span class="label">Tension</span><span class="value">${d.tension != null ? d.tension + '/5' : '\u2014'} ${d.tension_desc ? '(' + d.tension_desc + ')' : ''}</span>
-    <span class="label">Formation</span><span class="value">${d.education || '\u2014'}</span>
-  `;
-
-  tt.querySelector(".tt-rationale").textContent =
-    d.exposure_rationale || "";
 
   const pad = 16;
   let tx = mx + pad;
@@ -657,9 +858,12 @@ function layoutColumns() {
   const plotH = h - pad.top - pad.bottom;
   const colGap = 2;
 
+  // Use filtered data based on drill path
+  const filtered = getFilteredData();
+
   const byExposure = {};
   let totalJobs = 0;
-  for (const d of data) {
+  for (const d of filtered) {
     if (d.exposure == null) continue;
     if (!byExposure[d.exposure]) byExposure[d.exposure] = [];
     byExposure[d.exposure].push(d);
@@ -680,14 +884,14 @@ function layoutColumns() {
     const score = scores[i];
     const items = byExposure[score];
     const colJobs = colJobTotals[i];
-    const colW = (colJobs / totalJobs) * availW;
+    const colW = totalJobs > 0 ? (colJobs / totalJobs) * availW : availW / numCols;
 
     items.sort((a, b) => (b.tension || 0) - (a.tension || 0));
 
     let cy = pad.top;
     for (const d of items) {
       const jobs = d.demandeurs || 0;
-      const itemH = colJobs > 0 ? (jobs / colJobs) * plotH : 0;
+      const itemH = colJobs > 0 ? (jobs / colJobs) * plotH : plotH / items.length;
       if (itemH < 0.3) { cy += itemH; continue; }
       colRects.push({ ...d, rx: cx, ry: cy, rw: colW, rh: itemH });
       cy += itemH;
@@ -715,7 +919,9 @@ function drawColumns() {
 
   let hx = meta.pad.left;
   for (let i = 0; i < meta.scores.length; i++) {
-    const colW = (meta.colJobTotals[i] / meta.totalJobs) * meta.availW;
+    const colW = meta.totalJobs > 0
+      ? (meta.colJobTotals[i] / meta.totalJobs) * meta.availW
+      : meta.availW / meta.scores.length;
     if (colW > 16) {
       ctx.fillStyle = exposureColorCSS(meta.scores[i], 0.7);
       ctx.fillText(meta.scores[i], hx + colW / 2, meta.pad.top - 5);
@@ -790,10 +996,22 @@ function hitTestColumns(mx, my) {
 // ── Sidebar stats ──────────────────────────────────────────────────────
 
 function computeStats() {
-  const totalJobs = data.reduce((s, d) => s + (d.demandeurs || 0), 0);
+  const filtered = getFilteredData();
+
+  const totalJobs = filtered.reduce((s, d) => s + (d.demandeurs || 0), 0);
+
+  // Scope label
+  const scopeEl = document.getElementById("statScopeDesc");
+  if (drillPath.length === 0) {
+    scopeEl.textContent = data.length + " métiers";
+  } else if (drillPath.length === 1) {
+    scopeEl.textContent = (domainNames[drillPath[0]] || drillPath[0]) + " \u00b7 " + filtered.length + " métiers";
+  } else {
+    scopeEl.textContent = (subdomainNames[drillPath[1]] || drillPath[1]) + " \u00b7 " + filtered.length + " métiers";
+  }
 
   let weightedSum = 0, weightedCount = 0;
-  for (const d of data) {
+  for (const d of filtered) {
     if (d.exposure != null && d.demandeurs) {
       weightedSum += d.exposure * d.demandeurs;
       weightedCount += d.demandeurs;
@@ -802,7 +1020,7 @@ function computeStats() {
   const weightedAvg = weightedCount > 0 ? weightedSum / weightedCount : 0;
 
   const histogram = new Array(11).fill(0);
-  for (const d of data) {
+  for (const d of filtered) {
     if (d.exposure != null && d.demandeurs) {
       histogram[d.exposure] += d.demandeurs;
     }
@@ -817,7 +1035,7 @@ function computeStats() {
   ];
   for (const tier of tiers) {
     tier.demandeurs = 0;
-    for (const d of data) {
+    for (const d of filtered) {
       if (d.exposure != null && d.demandeurs &&
           d.exposure >= tier.range[0] && d.exposure <= tier.range[1]) {
         tier.demandeurs += d.demandeurs;
@@ -827,7 +1045,7 @@ function computeStats() {
   }
 
   let wagesExposed = 0;
-  for (const d of data) {
+  for (const d of filtered) {
     if (d.exposure != null && d.exposure >= 7 && d.demandeurs && d.pay) {
       wagesExposed += d.demandeurs * d.pay;
     }
@@ -872,7 +1090,7 @@ function computeStats() {
   const payChartEl = document.getElementById("payChart");
   payChartEl.innerHTML = payBands.map(band => {
     let wSum = 0, wCount = 0;
-    for (const d of data) {
+    for (const d of filtered) {
       if (d.exposure != null && d.demandeurs && d.pay != null &&
           d.pay >= band.min && d.pay < band.max) {
         wSum += d.exposure * d.demandeurs;
@@ -899,7 +1117,7 @@ function computeStats() {
   const eduChartEl = document.getElementById("eduChart");
   eduChartEl.innerHTML = eduGroups.map(grp => {
     let wSum = 0, wCount = 0;
-    for (const d of data) {
+    for (const d of filtered) {
       if (d.exposure != null && d.demandeurs && grp.match.includes(d.education)) {
         wSum += d.exposure * d.demandeurs;
         wCount += d.demandeurs;
@@ -941,8 +1159,12 @@ canvas.addEventListener("mousemove", (e) => {
 
 canvas.addEventListener("click", (e) => {
   const hit = currentView === "treemap" ? hitTest(e.clientX, e.clientY) : hitTestColumns(e.clientX, e.clientY);
-  if (hit && hit.url) {
-    window.open(hit.url, "_blank");
+  if (hit) {
+    if (hit.isAggregate) {
+      drillDown(hit.drillKey);
+    } else if (hit.url) {
+      window.open(hit.url, "_blank");
+    }
   }
 });
 
@@ -950,6 +1172,13 @@ canvas.addEventListener("mouseleave", () => {
   hovered = null;
   hideTooltip();
   currentView === "treemap" ? draw() : drawColumns();
+});
+
+// Keyboard: Escape to go back
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && drillPath.length > 0) {
+    drillUp(drillPath.length - 1);
+  }
 });
 
 function resize() {
@@ -981,8 +1210,10 @@ fetch("data.json")
   .then(r => r.json())
   .then(d => {
     data = d;
+    buildHierarchyMaps();
     computeStats();
     drawGradientLegend();
+    updateBreadcrumb();
     resize();
   });
 

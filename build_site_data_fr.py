@@ -15,6 +15,13 @@ import os
 
 
 def main():
+    # Charger les infos hiérarchiques depuis occupations_fr.json
+    occ_map = {}
+    if os.path.exists("occupations_fr.json"):
+        with open("occupations_fr.json") as f:
+            for occ in json.load(f):
+                occ_map[occ["slug"]] = occ
+
     # Charger les scores d'exposition IA
     scores = {}
     if os.path.exists("scores_fr.json"):
@@ -58,11 +65,21 @@ def main():
         offres = row.get("nombre_offres", "")
         tension = row.get("tension_pct", "")
 
+        # Infos hiérarchiques ROME
+        occ_info = occ_map.get(slug, {})
+        code_rome = row.get("code_rome", "")
+        domain_code = occ_info.get("domain_code", code_rome[0] if code_rome else "")
+        subdomain_code = occ_info.get("subdomain_code", code_rome[:3] if len(code_rome) >= 3 else "")
+
         data.append({
             "title": row["title"],
             "slug": slug,
             "category": row["category"],
-            "code_rome": row.get("code_rome", ""),
+            "code_rome": code_rome,
+            "domain_code": domain_code,
+            "domain_name": occ_info.get("domain_name", ""),
+            "subdomain_code": subdomain_code,
+            "subdomain_name": occ_info.get("subdomain_name", ""),
             "pay": int(salaire) if salaire else None,
             "demandeurs": int(demandeurs) if demandeurs else None,
             "offres": int(offres) if offres else None,
