@@ -7,6 +7,40 @@
 
 ---
 
+## Introduction
+
+### Pourquoi cette application ?
+
+L'intelligence artificielle générative progresse à un rythme sans précédent. En quelques années, les modèles de langage sont passés de curiosités de laboratoire à des outils capables de rédiger, coder, analyser, traduire et créer du contenu visuel à un niveau professionnel. Cette accélération pose une question concrète et urgente pour le marché du travail : **quels métiers seront les plus transformés par l'IA, et dans quelle mesure ?**
+
+Le débat public oscille entre deux extrêmes — un techno-optimisme qui minimise les disruptions, et un catastrophisme qui prédit la fin du travail. Il manque un outil factuel, ancré dans les données réelles de l'emploi, permettant à chacun — décideurs publics, dirigeants d'entreprise, salariés, étudiants — de visualiser concrètement l'exposition de chaque métier à l'IA.
+
+Ce projet s'inspire du travail d'Andrej Karpathy sur les données du Bureau of Labor Statistics américain, et l'adapte au contexte français en s'appuyant sur le **Répertoire Opérationnel des Métiers et des Emplois (ROME)** de France Travail et les données statistiques du marché du travail français (DARES, INSEE).
+
+### Comment ça fonctionne ?
+
+L'application repose sur un **pipeline de données en 5 étapes** :
+
+1. **Collecte des données métiers** — Les fiches ROME et les statistiques du marché du travail (salaires, demandeurs d'emploi, offres, tensions de recrutement) sont récupérées via l'API REST de France Travail (authentification OAuth2). Les données brutes sont stockées localement en JSON pour permettre un traitement reproductible.
+
+2. **Structuration** — Un script Python (`make_csv_fr.py`) parse les données JSON de l'API et extrait pour chaque métier : le salaire médian annuel net (calculé à partir des salaires mensuels moyens par famille professionnelle), le nombre de demandeurs d'emploi (catégories A+B+C), le nombre d'offres, et l'indicateur de tension du marché (rang 1 à 5, de « Très défavorable » à « Très favorable »).
+
+3. **Scoring par IA** — Chaque fiche métier (description, compétences, conditions d'accès) est envoyée à un modèle de langage (Gemini Flash, via OpenRouter) avec un prompt expert calibré. Le modèle évalue l'exposition technique du métier à l'IA sur une échelle de 0 (aucun impact) à 10 (automatisation quasi-totale), en justifiant son score. Le paramètre temperature=0.2 assure la reproductibilité. Le processus est incrémental : les scores sont sauvegardés après chaque évaluation, permettant de reprendre en cas d'interruption.
+
+4. **Fusion des données** — Un script (`build_site_data_fr.py`) fusionne le CSV des statistiques et le fichier des scores IA en un unique `data.json` compact, prêt pour le frontend.
+
+5. **Visualisation interactive** — Une page HTML/CSS/JS vanilla (sans framework) affiche une **treemap** où chaque rectangle représente un métier. La taille du rectangle est proportionnelle au nombre de demandeurs d'emploi (poids économique), et sa couleur encode le score d'exposition IA (gradient vert → orange → rouge). Une vue alternative en colonnes croise l'exposition IA avec l'indicateur de tension du marché. Le survol de chaque métier affiche un tooltip détaillé avec toutes les données et la justification du score IA.
+
+### Choix techniques
+
+- **Python 3.10 + uv** comme gestionnaire de paquets pour un environnement reproductible
+- **API REST France Travail** plutôt que scraping HTML, pour la fiabilité et la structure des données
+- **Scoring via LLM** plutôt qu'un modèle statistique, car l'évaluation de l'exposition à l'IA nécessite un raisonnement qualitatif sur la nature des tâches de chaque métier
+- **Frontend vanilla** (HTML/CSS/JS + Canvas) sans dépendance, pour une visualisation légère et portable
+- **Données 100% françaises** : salaires en euros, niveaux d'éducation français (CAP à Doctorat), codes ROME, indicateurs de tension France Travail
+
+---
+
 ## Objet
 
 La page web présente une **cartographie interactive** (treemap) de l'exposition de 61 métiers français à l'intelligence artificielle. Chaque métier est représenté par un rectangle dont la **taille** est proportionnelle au nombre de demandeurs d'emploi et la **couleur** reflète le score d'exposition IA (vert = faible, orange/rouge = élevée).
