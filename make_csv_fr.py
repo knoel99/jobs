@@ -32,6 +32,8 @@ def extract_salary(data):
     Structure: data["salaires"]["valeursParPeriode"][*]["salaireValeurMontant"]
     SAL1 = débutant, SAL2 = expérimenté, SAL3 = moyen
     Les montants sont en net mensuel.
+    Plusieurs FAP (familles professionnelles) peuvent être retournées
+    pour un même code ROME → on fait la moyenne pondérée des SAL3.
     """
     salaires = data.get("salaires")
     if not salaires:
@@ -41,20 +43,25 @@ def extract_salary(data):
     if not periodes:
         return "", ""
 
-    # Prendre la période la plus récente
-    periode = periodes[-1]
-    montants = periode.get("salaireValeurMontant", [])
+    # Collecter SAL3 (ou SAL1 en fallback) de chaque FAP
+    sal_values = []
+    for periode in periodes:
+        montants = periode.get("salaireValeurMontant", [])
+        sal3 = None
+        sal1 = None
+        for m in montants:
+            code = m.get("codeNomenclature", "")
+            montant = m.get("valeurPrincipaleMontant")
+            if code == "SAL3" and montant:
+                sal3 = montant
+            elif code == "SAL1" and montant:
+                sal1 = montant
+        val = sal3 or sal1
+        if val:
+            sal_values.append(val)
 
-    sal_moyen = None
-    for m in montants:
-        code = m.get("codeNomenclature", "")
-        montant = m.get("valeurPrincipaleMontant")
-        if code == "SAL3" and montant:  # SAL3 = salaire moyen
-            sal_moyen = montant
-        elif code == "SAL1" and montant and sal_moyen is None:
-            sal_moyen = montant  # Fallback sur SAL1 si pas de SAL3
-
-    if sal_moyen:
+    if sal_values:
+        sal_moyen = sum(sal_values) / len(sal_values)
         annuel = round(sal_moyen * 12)
         horaire = f"{sal_moyen * 12 / HEURES_ANNUELLES:.2f}"
         return str(annuel), horaire
@@ -102,7 +109,17 @@ def extract_offres(data):
 
 
 def extract_tensions(data):
-    """Extraire l'indicateur de tension (difficulté de recrutement)."""
+    """Extraire l'indicateur principal de tension (perspectives employeur).
+
+    Structure: tensions.listeValeursParPeriode[*]
+    Codes nomenclature :
+      - PERSPECTIVE : indicateur principal (score décimal + rang 1-5)
+      - INT_EMB : intensité d'embauche
+      - MAIN_OEUVRE : manque de main d'œuvre
+      - ATTR_SALARIALE, COND_TRAVAIL, DUR_EMPL, etc.
+
+    valeurPrincipaleNombre = rang 1 à 5 (1=très défavorable, 5=très favorable)
+    """
     tensions = data.get("tensions")
     if not tensions:
         return "", ""
@@ -111,29 +128,30 @@ def extract_tensions(data):
     if not periodes:
         return "", ""
 
-    # Chercher l'indicateur global de tension (INDIC_TENSION)
+    # Chercher l'indicateur principal PERSPECTIVE
     for p in periodes:
         code_nom = p.get("codeNomenclature", "")
-        if code_nom == "INDIC_TENSION":
-            val = p.get("valeurPrincipaleDecimale") or p.get("valeurPrincipaleRang")
-            if val is not None:
-                # Tension de 0 à 1 → convertir en description
-                if isinstance(val, float):
-                    if val >= 0.7:
-                        desc = "Forte tension"
-                    elif val >= 0.4:
-                        desc = "Tension modérée"
-                    else:
-                        desc = "Faible tension"
-                    return str(round(val * 100)), desc
-                return str(val), ""
+        if code_nom == "PERSPECTIVE":
+            rang = p.get("valeurPrincipaleNombre")
+            if rang is not None:
+                # Rang 1-5 → description
+                descs = {
+                    1: "Très défavorable",
+                    2: "Défavorable",
+                    3: "Neutre",
+                    4: "Favorable",
+                    5: "Très favorable",
+                }
+                return str(rang), descs.get(rang, "")
+            break
 
-    # Fallback: prendre la première valeur disponible
-    p = periodes[0]
-    val = p.get("valeurPrincipaleDecimale") or p.get("valeurPrincipaleRang")
-    lib = p.get("libNomenclature", "")
-    if val is not None:
-        return str(round(val * 100) if isinstance(val, float) else val), lib
+    # Fallback: chercher INT_EMB (intensité d'embauche)
+    for p in periodes:
+        code_nom = p.get("codeNomenclature", "")
+        if code_nom == "INT_EMB":
+            rang = p.get("valeurPrincipaleNombre")
+            if rang is not None:
+                return str(rang), "Intensité embauche"
 
     return "", ""
 
@@ -226,7 +244,8 @@ def main():
             dem = r['nombre_demandeurs'] or '?'
             off = r['nombre_offres'] or '?'
             ten = r['tension_pct'] or '?'
-            print(f"  {r['title']} ({r['code_rome']}): {sal}€/an, {dem} DE, {off} offres, tension={ten}%")
+            tdesc = r['tension_desc'] or ''
+            print(f"  {r['title']} ({r['code_rome']}): {sal}€/an, {dem} DE, {off} offres, tension={ten}/5 {tdesc}")
 
 
 if __name__ == "__main__":

@@ -353,7 +353,7 @@ function exposureColorCSS(score, alpha) {
 
 function tensionColorCSS(tension, alpha) {
   if (tension == null) return `rgba(128,128,128,${alpha})`;
-  const t = Math.max(0, Math.min(1, tension / 100));
+  const t = Math.max(0, Math.min(1, (tension - 1) / 4));  // rang 1-5 → 0-1
   let r, g, b;
   if (t < 0.5) {
     const s = t / 0.5;
@@ -615,7 +615,7 @@ function showTooltip(d, mx, my) {
     <span class="label">Salaire médian</span><span class="value">${formatPay(d.pay)}</span>
     <span class="label">Demandeurs</span><span class="value">${formatNumber(d.demandeurs)}</span>
     <span class="label">Offres</span><span class="value">${formatNumber(d.offres)}</span>
-    <span class="label">Tension</span><span class="value">${d.tension != null ? d.tension + '%' : '\u2014'} ${d.tension_desc ? '(' + d.tension_desc + ')' : ''}</span>
+    <span class="label">Tension</span><span class="value">${d.tension != null ? d.tension + '/5' : '\u2014'} ${d.tension_desc ? '(' + d.tension_desc + ')' : ''}</span>
     <span class="label">Formation</span><span class="value">${d.education || '\u2014'}</span>
   `;
 
@@ -762,7 +762,7 @@ function drawColumns() {
       ctx.fillText(r.title, rx + 4, ry + 2);
 
       if (rh > 28 && rw > 50) {
-        const info = (r.tension != null ? "tension " + r.tension + "%" : "") +
+        const info = (r.tension != null ? "tension " + r.tension + "/5" : "") +
                      (r.demandeurs ? " \u00b7 " + formatNumber(r.demandeurs) + " DE" : "");
         ctx.font = `400 ${Math.max(7, fontSize - 2)}px -apple-system, system-ui, sans-serif`;
         ctx.fillStyle = "rgba(255,255,255,0.5)";
