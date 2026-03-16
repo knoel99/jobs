@@ -8,6 +8,10 @@ Deux modes :
 
 Sauvegarde le HTML brut dans html_fr/<slug>.html.
 
+Rate limits France Travail :
+  - ROME 4.0 Métiers / Fiches / Compétences : 1 appel/sec
+  - Marché du travail : 10 appels/sec
+
 Usage:
     uv run python scrape_fr.py                        # tout scraper
     uv run python scrape_fr.py --start 0 --end 5      # premiers 5
@@ -28,6 +32,55 @@ load_dotenv()
 HTML_DIR = "html_fr"
 OCCUPATIONS_FILE = "occupations_fr.json"
 
+# Rate limits par API (en secondes entre chaque appel)
+RATE_LIMITS = {
+    "rome_metiers": 1.1,       # ROME 4.0 Métiers v1 : 1 appel/sec → 1.1s marge
+    "rome_fiches": 1.1,        # ROME 4.0 Fiches métiers v1 : 1 appel/sec
+    "rome_competences": 1.1,   # ROME 4.0 Compétences v1 : 1 appel/sec
+    "marche_travail": 0.15,    # Marché du travail v1 : 10 appels/sec → 0.15s marge
+}
+
+# Suivi des derniers appels par API pour respecter les rate limits
+_last_call = {}
+
+
+def rate_limit_wait(api_name):
+    """Attendre le temps nécessaire pour respecter le rate limit d'une API."""
+    min_interval = RATE_LIMITS.get(api_name, 1.1)
+    now = time.monotonic()
+    last = _last_call.get(api_name, 0)
+    elapsed = now - last
+    if elapsed < min_interval:
+        wait = min_interval - elapsed
+        time.sleep(wait)
+    _last_call[api_name] = time.monotonic()
+
+
+def api_call_with_retry(client, url, headers, api_name, max_retries=3):
+    """Appel API avec respect du rate limit et retry sur 429."""
+    for attempt in range(max_retries + 1):
+        rate_limit_wait(api_name)
+        try:
+            resp = client.get(url, headers=headers, timeout=15)
+            if resp.status_code == 429:
+                retry_after = float(resp.headers.get("Retry-After", 2))
+                wait = max(retry_after, RATE_LIMITS.get(api_name, 1.1) * 2)
+                print(f"429 rate limit, attente {wait:.1f}s...", end=" ", flush=True)
+                time.sleep(wait)
+                continue
+            resp.raise_for_status()
+            return resp
+        except httpx.HTTPStatusError:
+            raise
+        except httpx.HTTPError as e:
+            if attempt < max_retries:
+                wait = 2 ** (attempt + 1)
+                print(f"erreur réseau, retry dans {wait}s...", end=" ", flush=True)
+                time.sleep(wait)
+            else:
+                raise
+    return None
+
 
 # ---------------------------------------------------------------------------
 # Mode API : France Travail (ex-Emploi Store)
@@ -47,7 +100,13 @@ def get_access_token():
             "grant_type": "client_credentials",
             "client_id": client_id,
             "client_secret": client_secret,
-            "scope": "api_rome-metiersv1 nomenclatureRome",
+            "scope": " ".join([
+                "api_rome-metiersv1",
+                "api_rome-fichesv1",
+                "api_rome-competencesv1",
+                "api_marchedutravailv1",
+                "nomenclatureRome",
+            ]),
         },
     )
     resp.raise_for_status()
@@ -55,7 +114,7 @@ def get_access_token():
 
 
 def scrape_api(occupations, args):
-    """Scraper les fiches via l'API REST France Travail."""
+    """Scraper les fiches via l'API REST France Travail (rate-limited)."""
     token = get_access_token()
     if not token:
         print("ERREUR : FRANCE_TRAVAIL_CLIENT_ID / CLIENT_SECRET manquants dans .env")
@@ -64,6 +123,10 @@ def scrape_api(occupations, args):
 
     client = httpx.Client()
     headers = {"Authorization": f"Bearer {token}", "Accept": "application/json"}
+
+    print(f"\nRate limits : ROME=1 req/s, Marché du travail=10 req/s")
+    print(f"Temps estimé : ~{len(occupations) * 3.5:.0f}s "
+          f"({len(occupations)} métiers × ~3.5s/métier)\n")
 
     for i, occ in enumerate(occupations):
         slug = occ["slug"]
@@ -77,23 +140,41 @@ def scrape_api(occupations, args):
         print(f"  [{i}/{len(occupations)}] {occ['title']} ({code})...", end=" ", flush=True)
 
         try:
-            # Fiche métier complète
-            resp = client.get(
-                f"https://api.francetravail.io/partenaire/rome/v1/metier/{code}",
-                headers=headers,
-                timeout=15,
+            result = {}
+
+            # 1. Fiche métier (ROME Fiches : 1 req/s)
+            resp = api_call_with_retry(
+                client,
+                f"https://api.francetravail.io/partenaire/rome-fiches/v1/fichemetier/{code}",
+                headers, "rome_fiches",
             )
-            resp.raise_for_status()
+            if resp:
+                result["fiche"] = resp.json()
+
+            # 2. Métier info (ROME Métiers : 1 req/s)
+            resp = api_call_with_retry(
+                client,
+                f"https://api.francetravail.io/partenaire/rome-metiers/v1/metiers/metier/{code}",
+                headers, "rome_metiers",
+            )
+            if resp:
+                result["metier"] = resp.json()
+
+            # 3. Stats marché du travail (10 req/s — plus rapide)
+            resp = api_call_with_retry(
+                client,
+                f"https://api.francetravail.io/partenaire/marche-travail/v1/statistiques/rome/{code}",
+                headers, "marche_travail",
+            )
+            if resp:
+                result["marche"] = resp.json()
 
             with open(out_path, "w") as f:
-                json.dump(resp.json(), f, ensure_ascii=False, indent=2)
+                json.dump(result, f, ensure_ascii=False, indent=2)
 
             print("OK")
         except Exception as e:
             print(f"ERREUR: {e}")
-
-        if i < len(occupations) - 1:
-            time.sleep(args.delay)
 
     client.close()
 
@@ -184,6 +265,7 @@ def main():
     print(f"Fiches : {len(occupations)}")
 
     if mode == "api":
+        print("(rate limits gérés automatiquement, --delay ignoré en mode API)")
         scrape_api(occupations, args)
     else:
         scrape_html(occupations, args)
