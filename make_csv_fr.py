@@ -70,7 +70,13 @@ def extract_salary(data):
 
 
 def extract_demandeurs(data):
-    """Extraire le nombre total de demandeurs d'emploi (catégorie A+B+C)."""
+    """Extraire le nombre de demandeurs d'emploi catégorie ABC.
+
+    Les périodes contiennent des lignes pour chaque catégorie (A, B, C, ABC,
+    ABCDE, ABCDEFG, D, E, F, G). Ces catégories sont imbriquées :
+    ABC = A+B+C, ABCDE = ABC+D+E, etc.
+    On prend uniquement la ligne ABC (catégories A+B+C = chiffre officiel DEFM).
+    """
     demandeurs = data.get("demandeurs")
     if not demandeurs:
         return ""
@@ -79,14 +85,21 @@ def extract_demandeurs(data):
     if not periodes:
         return ""
 
-    # Sommer toutes les catégories pour le dernier trimestre
-    total = 0
+    # Prendre la ligne ABC (demandeurs cat. A+B+C)
     for p in periodes:
-        nb = p.get("valeurPrincipaleNombre")
-        if nb:
-            total += nb
+        if p.get("codeNomenclature") == "ABC":
+            nb = p.get("valeurPrincipaleNombre")
+            if nb:
+                return str(nb)
 
-    return str(total) if total > 0 else ""
+    # Fallback: catégorie A seule
+    for p in periodes:
+        if p.get("codeNomenclature") == "A":
+            nb = p.get("valeurPrincipaleNombre")
+            if nb:
+                return str(nb)
+
+    return ""
 
 
 def extract_offres(data):
@@ -156,6 +169,41 @@ def extract_tensions(data):
     return "", ""
 
 
+def extract_niveau_education(data):
+    """Extraire le niveau d'éducation requis depuis metier.accesEmploi.
+
+    Cherche le niveau le plus élevé mentionné dans le texte d'accès à l'emploi.
+    Retourne une valeur normalisée compatible avec le frontend.
+    """
+    metier = data.get("metier", {})
+    if not isinstance(metier, dict):
+        return ""
+
+    acces = metier.get("accesEmploi", "")
+    if not acces:
+        return ""
+
+    text = acces.lower()
+
+    # Du plus élevé au plus bas — on prend le plus haut mentionné
+    if "bac+8" in text or "bac + 8" in text or "doctorat" in text or "docteur" in text:
+        return "Bac+8 (Doctorat)"
+    if "bac+5" in text or "bac + 5" in text or "master" in text or "ingénieur" in text:
+        return "Bac+5 (Master/Ingénieur)"
+    if "bac+3" in text or "bac + 3" in text or "licence" in text:
+        return "Bac+3 (Licence)"
+    if "bac+2" in text or "bac + 2" in text or "bts" in text or "dut" in text or "deust" in text:
+        return "Bac+2 (BTS/DUT)"
+    if "bac pro" in text or "bac " in text or "baccalauréat" in text or "niveau bac" in text:
+        return "Bac"
+    if "cap" in text or "bep" in text or "niveau 3" in text:
+        return "CAP/BEP"
+    if "sans diplôme" in text or "sans qualification" in text:
+        return "CAP/BEP"
+
+    return ""
+
+
 def extract_description(data):
     """Extraire la description du métier."""
     metier = data.get("metier", {})
@@ -183,7 +231,7 @@ def extract_from_json(json_path, occ_meta):
         "url": occ_meta["url"],
         "salaire_median_annuel": sal_annuel,
         "salaire_median_horaire": sal_horaire,
-        "niveau_education": "",
+        "niveau_education": extract_niveau_education(data),
         "nombre_demandeurs": demandeurs,
         "nombre_offres": offres,
         "tension_pct": tension_pct,
