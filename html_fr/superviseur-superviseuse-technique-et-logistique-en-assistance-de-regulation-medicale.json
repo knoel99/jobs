@@ -1,0 +1,4460 @@
+{
+  "metier": {
+    "obsolete": false,
+    "code": "D1428",
+    "libelle": "Superviseur / Superviseuse technique et logistique en assistance de régulation médicale",
+    "definition": "Le superviseur technique et logistique en assistance de régulation médicale assure de manière opérationnelle le fonctionnement quotidien du centre de réception et de régulation des appels d’un service d’accès aux soins ou d’un service d’aide médicale d’urgence.\\nCoordonne les opérations et les équipes lors des interventions d'urgence\\nAssure la gestion logistique des ressources matérielles et humaines\\nOptimise les processus pour améliorer l'efficacité des interventions\\nSupervise la communication entre les différents acteurs de l'urgence\\nAnalyse les situations d'urgence pour une prise de décision rapide et efficace\\nMaintient les standards de qualité et de sécurité dans toutes les opérations",
+    "accesEmploi": "Cet emploi est accessible avec une formation d'assistant de régulation médicale. \\nDe plus, une expérience de la relation clientèle ou du management d'équipe ainsi qu'une formation spécifique facilitent l'accès aux fonctions de superviseur.",
+    "riasecMajeur": "C",
+    "riasecMineur": "I",
+    "transitionEcologique": false,
+    "transitionEcologiqueDetaillee": "EMPLOI_BLANC",
+    "transitionNumerique": false,
+    "domaineProfessionnel": {
+      "code": "D14",
+      "libelle": "Force de vente",
+      "grandDomaine": {
+        "code": "D",
+        "libelle": "Commerce, Vente et Grande distribution"
+      }
+    },
+    "appellations": [
+      {
+        "code": "509752",
+        "libelle": "Superviseur / Superviseuse technique et logistique en assistance de régulation médicale",
+        "libelleCourt": "Superviseur(euse) en assistance de régulation médicale",
+        "emploiCadre": false,
+        "emploiReglemente": false,
+        "transitionEcologique": false,
+        "transitionEcologiqueDetaillee": "EMPLOI_BLANC",
+        "transitionNumerique": false,
+        "transitionDemographique": false,
+        "classification": "PRINCIPALE",
+        "competencesCles": []
+      }
+    ],
+    "themes": [],
+    "centresInterets": [
+      {
+        "code": "4",
+        "libelle": "J'ai le sens du contact"
+      },
+      {
+        "code": "18",
+        "libelle": "J'aime organiser, planifier"
+      },
+      {
+        "code": "22",
+        "libelle": "Je souhaite prendre soin des autres"
+      },
+      {
+        "code": "23",
+        "libelle": "Je souhaite protéger et secourir"
+      }
+    ],
+    "centresInteretsLies": [
+      {
+        "centreInteret": {
+          "code": "4",
+          "libelle": "J'ai le sens du contact"
+        },
+        "principal": false
+      },
+      {
+        "centreInteret": {
+          "code": "18",
+          "libelle": "J'aime organiser, planifier"
+        },
+        "principal": false
+      },
+      {
+        "centreInteret": {
+          "code": "22",
+          "libelle": "Je souhaite prendre soin des autres"
+        },
+        "principal": false
+      },
+      {
+        "centreInteret": {
+          "code": "23",
+          "libelle": "Je souhaite protéger et secourir"
+        },
+        "principal": true
+      }
+    ],
+    "secteursActivites": [
+      {
+        "code": "85",
+        "libelle": "Santé"
+      },
+      {
+        "code": "86",
+        "libelle": "Service à la personne"
+      },
+      {
+        "code": "119",
+        "libelle": "Médical",
+        "secteurActivite": {
+          "code": "85",
+          "libelle": "Santé"
+        }
+      }
+    ],
+    "secteursActivitesLies": [
+      {
+        "secteurActivite": {
+          "code": "85",
+          "libelle": "Santé"
+        },
+        "principal": true
+      },
+      {
+        "secteurActivite": {
+          "code": "86",
+          "libelle": "Service à la personne"
+        },
+        "principal": false
+      },
+      {
+        "secteurActivite": {
+          "code": "119",
+          "libelle": "Médical",
+          "secteurActivite": {
+            "code": "85",
+            "libelle": "Santé"
+          }
+        },
+        "principal": false
+      }
+    ],
+    "competencesMobilisees": [
+      {
+        "type": "SAVOIR",
+        "code": "100541",
+        "libelle": "Techniques de communication orales, écrites et numériques",
+        "codeOgr": "100541"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "122103",
+        "libelle": "Contrôler la qualité du discours et de l'argumentaire des téléopérateurs",
+        "codeOgr": "122103",
+        "riasecMajeur": "E",
+        "riasecMineur": "S"
+      },
+      {
+        "type": "MACRO-SAVOIR-FAIRE",
+        "code": "300004",
+        "libelle": "Recruter et intégrer une personne",
+        "codeOgr": "300004",
+        "riasecMajeur": "E"
+      },
+      {
+        "type": "MACRO-SAVOIR-FAIRE",
+        "code": "300021",
+        "libelle": "Transmettre une technique, un savoir-faire",
+        "codeOgr": "300021"
+      },
+      {
+        "type": "MACRO-SAVOIR-FAIRE",
+        "code": "300023",
+        "libelle": "Définir des besoins en développement des compétences",
+        "codeOgr": "300023"
+      },
+      {
+        "type": "MACRO-SAVOIR-ETRE-PROFESSIONNEL",
+        "code": "300465",
+        "libelle": "Avoir l'esprit d'équipe",
+        "codeOgr": "300465"
+      },
+      {
+        "type": "MACRO-SAVOIR-ETRE-PROFESSIONNEL",
+        "code": "300473",
+        "libelle": "Faire preuve de réactivité",
+        "codeOgr": "300473"
+      },
+      {
+        "type": "MACRO-SAVOIR-ETRE-PROFESSIONNEL",
+        "code": "300483",
+        "libelle": "Organiser son travail selon les priorités et les objectifs",
+        "codeOgr": "300483",
+        "riasecMajeur": "E"
+      },
+      {
+        "type": "MACRO-SAVOIR-ETRE-PROFESSIONNEL",
+        "code": "300489",
+        "libelle": "Faire preuve de leadership",
+        "codeOgr": "300489",
+        "riasecMajeur": "E"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "403441",
+        "libelle": "Effectuer un reporting régulier à la hiérarchie",
+        "codeOgr": "403441"
+      },
+      {
+        "type": "SAVOIR",
+        "code": "404550",
+        "libelle": "Bureautique et outils collaboratifs",
+        "codeOgr": "404550"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "484953",
+        "libelle": "Maintenir une communication claire et professionnelle",
+        "codeOgr": "484953"
+      },
+      {
+        "type": "SAVOIR",
+        "code": "476920",
+        "libelle": "Gestion du stress",
+        "codeOgr": "476920"
+      },
+      {
+        "type": "SAVOIR",
+        "code": "478421",
+        "libelle": "Techniques de gestion d'équipe",
+        "codeOgr": "478421"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "490120",
+        "libelle": "Manager son équipe à l'aide des indicateurs de performance",
+        "codeOgr": "490120"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "484617",
+        "libelle": "Optimiser les processus de régulation pour réduire les temps de réponse",
+        "codeOgr": "484617"
+      },
+      {
+        "type": "SAVOIR",
+        "code": "492388",
+        "libelle": "Utilisation de logiciels spécifiques",
+        "codeOgr": "492388"
+      },
+      {
+        "type": "SAVOIR",
+        "code": "514291",
+        "libelle": "Diplôme d'assistant de régulation médicale",
+        "codeOgr": "514291"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "513836",
+        "libelle": "Participer à l’animation, et au management des équipes en environnement fonctionnel",
+        "codeOgr": "513836"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "502581",
+        "libelle": "Former le personnel aux procédures de régulation médicale",
+        "codeOgr": "502581"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "513834",
+        "libelle": "Organiser les activités et coopérer avec les différents acteurs",
+        "codeOgr": "513834"
+      },
+      {
+        "type": "SAVOIR",
+        "code": "513822",
+        "libelle": "Accueil et accompagnement pédagogique (ARM, autres agents, étudiants, stagiaires, etc)",
+        "codeOgr": "513822"
+      }
+    ],
+    "competencesMobiliseesPrincipales": [
+      {
+        "type": "MACRO-SAVOIR-FAIRE",
+        "code": "300444",
+        "libelle": "Valoriser et partager les bonnes pratiques",
+        "codeOgr": "300444"
+      },
+      {
+        "type": "MACRO-SAVOIR-FAIRE",
+        "code": "300449",
+        "libelle": "Expliquer et faire respecter les règles et procédures",
+        "codeOgr": "300449",
+        "riasecMajeur": "C"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "400323",
+        "libelle": "Gérer des situations de crise ou d'urgence",
+        "codeOgr": "400323"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "402209",
+        "libelle": "Assurer une communication efficace au sein de l'équipe",
+        "codeOgr": "402209",
+        "riasecMajeur": "S"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "513829",
+        "libelle": "Etre en appui à l’organisation et au pilotage opérationnel des activités et du fonctionnement du centre d’appels SAS ou SAMU",
+        "codeOgr": "513829"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "513835",
+        "libelle": "Participer à la planification, l’organisation, la répartition de la charge de travail et allouer les ressources pour garantir la réalisation",
+        "codeOgr": "513835"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "513833",
+        "libelle": "Evaluer la qualité des prestations et s’inscrire dans une démarche qualité",
+        "codeOgr": "513833"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "502582",
+        "libelle": "Evaluer les performances des équipes de régulation",
+        "codeOgr": "502582"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "513830",
+        "libelle": "Elaborer, mettre en place et exploiter des tableaux de bord spécifiques",
+        "codeOgr": "513830"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "513828",
+        "libelle": "Etre en appui à l’audit et à l’expertise des équipements, installations, systèmes spécifiques au domaine d’activité",
+        "codeOgr": "513828"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "513831",
+        "libelle": "Participer à la gestion et au dimensionnement des moyens à mettre en œuvre pour la continuité de service",
+        "codeOgr": "513831"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "513832",
+        "libelle": "Participer à l’élaboration des plannings des personnels (ARM, ARM coordinateur, opérateurs de soins non-programmés et étudiants)",
+        "codeOgr": "513832"
+      }
+    ],
+    "competencesMobiliseesEmergentes": [],
+    "divisionsNaf": [
+      {
+        "code": "86",
+        "libelle": "Activités pour la santé humaine"
+      }
+    ],
+    "formacodes": [
+      {
+        "code": "43437",
+        "libelle": "Personnel paramédical"
+      }
+    ],
+    "contextesTravail": [
+      {
+        "code": "23376",
+        "libelle": "Travail les week-ends et jours fériés",
+        "categorie": "HORAIRE_ET_DUREE_TRAVAIL"
+      },
+      {
+        "code": "300804",
+        "libelle": "Travail en astreinte",
+        "categorie": "HORAIRE_ET_DUREE_TRAVAIL"
+      },
+      {
+        "code": "300805",
+        "libelle": "Travail en horaires décalés",
+        "categorie": "HORAIRE_ET_DUREE_TRAVAIL"
+      },
+      {
+        "code": "403095",
+        "libelle": "Travail selon un rythme irrégulier et des pics d'activité",
+        "categorie": "HORAIRE_ET_DUREE_TRAVAIL"
+      },
+      {
+        "code": "403103",
+        "libelle": "Salarié secteur privé (CDI, CDD)",
+        "categorie": "STATUT_EMPLOI"
+      },
+      {
+        "code": "403104",
+        "libelle": "Salarié secteur public",
+        "categorie": "STATUT_EMPLOI"
+      },
+      {
+        "code": "513768",
+        "libelle": "Centres d'appels",
+        "categorie": "TYPE_STRUCTURE_ACCUEIL"
+      },
+      {
+        "code": "513769",
+        "libelle": "Tous types de public",
+        "categorie": "TYPE_BENEFICIAIRE"
+      }
+    ],
+    "emploiCadre": false,
+    "transitionDemographique": false
+  },
+  "salaires": {},
+  "demandeurs": {
+    "datMaj": "2026-03-11T07:29:21.000+01:00",
+    "codeIndicateur": "DE_1",
+    "codeFamille": "DEMANDEURS",
+    "libIndicateur": "Nombre et % de DE par catégories x caractéristiques, % par activités (Rome, Compétence)",
+    "listeValeursParPeriode": [
+      {
+        "datMaj": "2026-03-10T11:18:17.000+01:00",
+        "codeTypeTerritoire": "NAT",
+        "codeTerritoire": "FR",
+        "libTerritoire": "France",
+        "codeTypeActivite": "ROME",
+        "codeActivite": "D1428",
+        "libActivite": "Superviseur / Superviseuse technique et logistique en assistance de régulation médicale",
+        "codeNomenclature": "A",
+        "libNomenclature": "Demandeurs d'Emploi en catégorie A",
+        "codeTypePeriode": "TRIMESTRE",
+        "codePeriode": "2025T4",
+        "libPeriode": "4ème trimestre 2025",
+        "valeurPrincipaleNombre": 0,
+        "valeurSecondairePourcentage": 0.0,
+        "listeValeurParCaract": [
+          {
+            "codeTypeCaract": "GENRE",
+            "codeCaract": "H",
+            "libCaract": "Hommes",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRE",
+            "codeCaract": "F",
+            "libCaract": "Femmes",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE1",
+            "libCaract": "15-24 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE2",
+            "libCaract": "25-49 ans",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE3",
+            "libCaract": "50 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE4",
+            "libCaract": "25-34 ans",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE5",
+            "libCaract": "35-49 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE6",
+            "libCaract": "50-54 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE7",
+            "libCaract": "55 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE1",
+            "libCaract": "Hommes - 15-24 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE2",
+            "libCaract": "Hommes - 25-49 ans",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE3",
+            "libCaract": "Hommes - 50 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE4",
+            "libCaract": "Hommes - 25-34 ans",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE5",
+            "libCaract": "Hommes - 35-49 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE6",
+            "libCaract": "Hommes - 50-54 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE7",
+            "libCaract": "Hommes - 55 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE1",
+            "libCaract": "Femmes - 15-24 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE2",
+            "libCaract": "Femmes - 25-49 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE3",
+            "libCaract": "Femmes - 50 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE4",
+            "libCaract": "Femmes - 25-34 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE5",
+            "libCaract": "Femmes - 35-49 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE6",
+            "libCaract": "Femmes - 50-54 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE7",
+            "libCaract": "Femmes - 55 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "SANS",
+            "libCaract": "< CAP-BEP",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "CAPBEP",
+            "libCaract": "CAP-BEP",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC",
+            "libCaract": "Bac",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC2",
+            "libCaract": "Bac + 2",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC3EP",
+            "libCaract": "bac+3 / bac+4",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM1",
+            "libCaract": "Moins de 3 mois",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM2",
+            "libCaract": "De 3 mois à moins de 6 mois",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM3",
+            "libCaract": "De 6 mois à moins de 12 mois",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM4",
+            "libCaract": "De 1 an à moins de 2 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM5",
+            "libCaract": "2 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "ONQ",
+            "libCaract": "Ouvriers non qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "OQ",
+            "libCaract": "Ouvriers qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "ENQ",
+            "libCaract": "Employés non qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "EQ",
+            "libCaract": "Employés qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "TECH",
+            "libCaract": "Agents de maîtrise / Techniciens",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "CADRE",
+            "libCaract": "Cadres",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL2T",
+            "codeCaract": "NQ",
+            "libCaract": "Ouvriers et Employés non qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL2T",
+            "codeCaract": "Q",
+            "libCaract": "Ouvriers et Employés qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP1",
+            "libCaract": "Non renseigné",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP2",
+            "libCaract": "Moins d'un an",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP3",
+            "libCaract": "1 à 2 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP4",
+            "libCaract": "2 à 4 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP5",
+            "libCaract": "4 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "THOE",
+            "codeCaract": "THOE",
+            "libCaract": "Travailleurs handicapés bénéficiaires de l'obligation d'emploi",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "JEUNE",
+            "libCaract": "Jeune (-26 ans)",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "SENIOR",
+            "libCaract": "Senior (+55 ans)",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "NONQAL",
+            "libCaract": "Non Qualifié",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "BAC2EP",
+            "libCaract": "Bac+2 et plus",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "EXP2ANS",
+            "libCaract": "Expérience > 2 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "LONGUEDUREE",
+            "libCaract": "Longue durée",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "RSA",
+            "libCaract": "Bénéficiaire du RSA",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "HANDI",
+            "libCaract": "Travailleurs en situation d'handicap",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "QPV",
+            "libCaract": "Quartiers Prioritaires de la Ville",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "EXP1A4",
+            "libCaract": "Expérience de 1 à 4 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "PIC",
+            "libCaract": "Plan d'Investissement Compétences",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC5EP",
+            "libCaract": ">= Bac + 5",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP6",
+            "libCaract": "1 à 4 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          }
+        ]
+      },
+      {
+        "datMaj": "2026-03-10T11:18:14.000+01:00",
+        "codeTypeTerritoire": "NAT",
+        "codeTerritoire": "FR",
+        "libTerritoire": "France",
+        "codeTypeActivite": "ROME",
+        "codeActivite": "D1428",
+        "libActivite": "Superviseur / Superviseuse technique et logistique en assistance de régulation médicale",
+        "codeNomenclature": "ABC",
+        "libNomenclature": "Demandeurs d'Emploi en catégories A,B ou C",
+        "codeTypePeriode": "TRIMESTRE",
+        "codePeriode": "2025T4",
+        "libPeriode": "4ème trimestre 2025",
+        "valeurPrincipaleNombre": 0,
+        "valeurSecondairePourcentage": 0.0,
+        "listeValeurParCaract": [
+          {
+            "codeTypeCaract": "GENRE",
+            "codeCaract": "H",
+            "libCaract": "Hommes",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRE",
+            "codeCaract": "F",
+            "libCaract": "Femmes",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE1",
+            "libCaract": "15-24 ans",
+            "nombre": 0,
+            "pourcentage": 33.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE2",
+            "libCaract": "25-49 ans",
+            "nombre": 0,
+            "pourcentage": 33.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE3",
+            "libCaract": "50 ans et +",
+            "nombre": 0,
+            "pourcentage": 33.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE4",
+            "libCaract": "25-34 ans",
+            "nombre": 0,
+            "pourcentage": 33.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE5",
+            "libCaract": "35-49 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE6",
+            "libCaract": "50-54 ans",
+            "nombre": 0,
+            "pourcentage": 33.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE7",
+            "libCaract": "55 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE1",
+            "libCaract": "Hommes - 15-24 ans",
+            "nombre": 0,
+            "pourcentage": 33.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE2",
+            "libCaract": "Hommes - 25-49 ans",
+            "nombre": 0,
+            "pourcentage": 33.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE3",
+            "libCaract": "Hommes - 50 ans et +",
+            "nombre": 0,
+            "pourcentage": 33.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE4",
+            "libCaract": "Hommes - 25-34 ans",
+            "nombre": 0,
+            "pourcentage": 33.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE5",
+            "libCaract": "Hommes - 35-49 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE6",
+            "libCaract": "Hommes - 50-54 ans",
+            "nombre": 0,
+            "pourcentage": 33.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE7",
+            "libCaract": "Hommes - 55 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE1",
+            "libCaract": "Femmes - 15-24 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE2",
+            "libCaract": "Femmes - 25-49 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE3",
+            "libCaract": "Femmes - 50 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE4",
+            "libCaract": "Femmes - 25-34 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE5",
+            "libCaract": "Femmes - 35-49 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE6",
+            "libCaract": "Femmes - 50-54 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE7",
+            "libCaract": "Femmes - 55 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "SANS",
+            "libCaract": "< CAP-BEP",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "CAPBEP",
+            "libCaract": "CAP-BEP",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC",
+            "libCaract": "Bac",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC2",
+            "libCaract": "Bac + 2",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC3EP",
+            "libCaract": "bac+3 / bac+4",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM1",
+            "libCaract": "Moins de 3 mois",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM2",
+            "libCaract": "De 3 mois à moins de 6 mois",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM3",
+            "libCaract": "De 6 mois à moins de 12 mois",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM4",
+            "libCaract": "De 1 an à moins de 2 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM5",
+            "libCaract": "2 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "ONQ",
+            "libCaract": "Ouvriers non qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "OQ",
+            "libCaract": "Ouvriers qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "ENQ",
+            "libCaract": "Employés non qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "EQ",
+            "libCaract": "Employés qualifiés",
+            "nombre": 0,
+            "pourcentage": 33.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "TECH",
+            "libCaract": "Agents de maîtrise / Techniciens",
+            "nombre": 0,
+            "pourcentage": 67.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "CADRE",
+            "libCaract": "Cadres",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL2T",
+            "codeCaract": "NQ",
+            "libCaract": "Ouvriers et Employés non qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL2T",
+            "codeCaract": "Q",
+            "libCaract": "Ouvriers et Employés qualifiés",
+            "nombre": 0,
+            "pourcentage": 33.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP1",
+            "libCaract": "Non renseigné",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP2",
+            "libCaract": "Moins d'un an",
+            "nombre": 0,
+            "pourcentage": 33.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP3",
+            "libCaract": "1 à 2 ans",
+            "nombre": 0,
+            "pourcentage": 67.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP4",
+            "libCaract": "2 à 4 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP5",
+            "libCaract": "4 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "THOE",
+            "codeCaract": "THOE",
+            "libCaract": "Travailleurs handicapés bénéficiaires de l'obligation d'emploi",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "JEUNE",
+            "libCaract": "Jeune (-26 ans)",
+            "nombre": 0,
+            "pourcentage": 33.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "SENIOR",
+            "libCaract": "Senior (+55 ans)",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "NONQAL",
+            "libCaract": "Non Qualifié",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "BAC2EP",
+            "libCaract": "Bac+2 et plus",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "EXP2ANS",
+            "libCaract": "Expérience > 2 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "LONGUEDUREE",
+            "libCaract": "Longue durée",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "RSA",
+            "libCaract": "Bénéficiaire du RSA",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "HANDI",
+            "libCaract": "Travailleurs en situation d'handicap",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "QPV",
+            "libCaract": "Quartiers Prioritaires de la Ville",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "EXP1A4",
+            "libCaract": "Expérience de 1 à 4 ans",
+            "nombre": 0,
+            "pourcentage": 67.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "PIC",
+            "libCaract": "Plan d'Investissement Compétences",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC5EP",
+            "libCaract": ">= Bac + 5",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP6",
+            "libCaract": "1 à 4 ans",
+            "nombre": 0,
+            "pourcentage": 67.0,
+            "masque": false
+          }
+        ]
+      },
+      {
+        "datMaj": "2026-03-10T11:18:17.000+01:00",
+        "codeTypeTerritoire": "NAT",
+        "codeTerritoire": "FR",
+        "libTerritoire": "France",
+        "codeTypeActivite": "ROME",
+        "codeActivite": "D1428",
+        "libActivite": "Superviseur / Superviseuse technique et logistique en assistance de régulation médicale",
+        "codeNomenclature": "ABCDE",
+        "libNomenclature": "Demandeurs d'Emploi en catégories A,B,C,D et E",
+        "codeTypePeriode": "TRIMESTRE",
+        "codePeriode": "2025T4",
+        "libPeriode": "4ème trimestre 2025",
+        "valeurPrincipaleNombre": 0,
+        "valeurSecondairePourcentage": 0.0,
+        "listeValeurParCaract": [
+          {
+            "codeTypeCaract": "GENRE",
+            "codeCaract": "H",
+            "libCaract": "Hommes",
+            "nombre": 0,
+            "pourcentage": 75.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRE",
+            "codeCaract": "F",
+            "libCaract": "Femmes",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE1",
+            "libCaract": "15-24 ans",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE2",
+            "libCaract": "25-49 ans",
+            "nombre": 0,
+            "pourcentage": 50.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE3",
+            "libCaract": "50 ans et +",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE4",
+            "libCaract": "25-34 ans",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE5",
+            "libCaract": "35-49 ans",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE6",
+            "libCaract": "50-54 ans",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE7",
+            "libCaract": "55 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE1",
+            "libCaract": "Hommes - 15-24 ans",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE2",
+            "libCaract": "Hommes - 25-49 ans",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE3",
+            "libCaract": "Hommes - 50 ans et +",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE4",
+            "libCaract": "Hommes - 25-34 ans",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE5",
+            "libCaract": "Hommes - 35-49 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE6",
+            "libCaract": "Hommes - 50-54 ans",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE7",
+            "libCaract": "Hommes - 55 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE1",
+            "libCaract": "Femmes - 15-24 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE2",
+            "libCaract": "Femmes - 25-49 ans",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE3",
+            "libCaract": "Femmes - 50 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE4",
+            "libCaract": "Femmes - 25-34 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE5",
+            "libCaract": "Femmes - 35-49 ans",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE6",
+            "libCaract": "Femmes - 50-54 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE7",
+            "libCaract": "Femmes - 55 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "SANS",
+            "libCaract": "< CAP-BEP",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "CAPBEP",
+            "libCaract": "CAP-BEP",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC",
+            "libCaract": "Bac",
+            "nombre": 0,
+            "pourcentage": 75.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC2",
+            "libCaract": "Bac + 2",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC3EP",
+            "libCaract": "bac+3 / bac+4",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM1",
+            "libCaract": "Moins de 3 mois",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM2",
+            "libCaract": "De 3 mois à moins de 6 mois",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM3",
+            "libCaract": "De 6 mois à moins de 12 mois",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM4",
+            "libCaract": "De 1 an à moins de 2 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM5",
+            "libCaract": "2 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "ONQ",
+            "libCaract": "Ouvriers non qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "OQ",
+            "libCaract": "Ouvriers qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "ENQ",
+            "libCaract": "Employés non qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "EQ",
+            "libCaract": "Employés qualifiés",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "TECH",
+            "libCaract": "Agents de maîtrise / Techniciens",
+            "nombre": 0,
+            "pourcentage": 50.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "CADRE",
+            "libCaract": "Cadres",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL2T",
+            "codeCaract": "NQ",
+            "libCaract": "Ouvriers et Employés non qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL2T",
+            "codeCaract": "Q",
+            "libCaract": "Ouvriers et Employés qualifiés",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP1",
+            "libCaract": "Non renseigné",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP2",
+            "libCaract": "Moins d'un an",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP3",
+            "libCaract": "1 à 2 ans",
+            "nombre": 0,
+            "pourcentage": 50.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP4",
+            "libCaract": "2 à 4 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP5",
+            "libCaract": "4 ans et +",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "THOE",
+            "codeCaract": "THOE",
+            "libCaract": "Travailleurs handicapés bénéficiaires de l'obligation d'emploi",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "JEUNE",
+            "libCaract": "Jeune (-26 ans)",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "SENIOR",
+            "libCaract": "Senior (+55 ans)",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "NONQAL",
+            "libCaract": "Non Qualifié",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "BAC2EP",
+            "libCaract": "Bac+2 et plus",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "EXP2ANS",
+            "libCaract": "Expérience > 2 ans",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "LONGUEDUREE",
+            "libCaract": "Longue durée",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "RSA",
+            "libCaract": "Bénéficiaire du RSA",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "HANDI",
+            "libCaract": "Travailleurs en situation d'handicap",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "QPV",
+            "libCaract": "Quartiers Prioritaires de la Ville",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "EXP1A4",
+            "libCaract": "Expérience de 1 à 4 ans",
+            "nombre": 0,
+            "pourcentage": 50.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "PIC",
+            "libCaract": "Plan d'Investissement Compétences",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC5EP",
+            "libCaract": ">= Bac + 5",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP6",
+            "libCaract": "1 à 4 ans",
+            "nombre": 0,
+            "pourcentage": 50.0,
+            "masque": false
+          }
+        ]
+      },
+      {
+        "datMaj": "2026-03-10T11:18:17.000+01:00",
+        "codeTypeTerritoire": "NAT",
+        "codeTerritoire": "FR",
+        "libTerritoire": "France",
+        "codeTypeActivite": "ROME",
+        "codeActivite": "D1428",
+        "libActivite": "Superviseur / Superviseuse technique et logistique en assistance de régulation médicale",
+        "codeNomenclature": "ABCDEFG",
+        "libNomenclature": "Demandeurs d'Emploi toutes catégories",
+        "codeTypePeriode": "TRIMESTRE",
+        "codePeriode": "2025T4",
+        "libPeriode": "4ème trimestre 2025",
+        "valeurPrincipaleNombre": 0,
+        "valeurSecondairePourcentage": 100.0,
+        "listeValeurParCaract": [
+          {
+            "codeTypeCaract": "GENRE",
+            "codeCaract": "H",
+            "libCaract": "Hommes",
+            "nombre": 0,
+            "pourcentage": 75.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRE",
+            "codeCaract": "F",
+            "libCaract": "Femmes",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE1",
+            "libCaract": "15-24 ans",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE2",
+            "libCaract": "25-49 ans",
+            "nombre": 0,
+            "pourcentage": 50.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE3",
+            "libCaract": "50 ans et +",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE4",
+            "libCaract": "25-34 ans",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE5",
+            "libCaract": "35-49 ans",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE6",
+            "libCaract": "50-54 ans",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE7",
+            "libCaract": "55 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE1",
+            "libCaract": "Hommes - 15-24 ans",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE2",
+            "libCaract": "Hommes - 25-49 ans",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE3",
+            "libCaract": "Hommes - 50 ans et +",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE4",
+            "libCaract": "Hommes - 25-34 ans",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE5",
+            "libCaract": "Hommes - 35-49 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE6",
+            "libCaract": "Hommes - 50-54 ans",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE7",
+            "libCaract": "Hommes - 55 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE1",
+            "libCaract": "Femmes - 15-24 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE2",
+            "libCaract": "Femmes - 25-49 ans",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE3",
+            "libCaract": "Femmes - 50 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE4",
+            "libCaract": "Femmes - 25-34 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE5",
+            "libCaract": "Femmes - 35-49 ans",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE6",
+            "libCaract": "Femmes - 50-54 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE7",
+            "libCaract": "Femmes - 55 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "SANS",
+            "libCaract": "< CAP-BEP",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "CAPBEP",
+            "libCaract": "CAP-BEP",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC",
+            "libCaract": "Bac",
+            "nombre": 0,
+            "pourcentage": 75.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC2",
+            "libCaract": "Bac + 2",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC3EP",
+            "libCaract": "bac+3 / bac+4",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM1",
+            "libCaract": "Moins de 3 mois",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM2",
+            "libCaract": "De 3 mois à moins de 6 mois",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM3",
+            "libCaract": "De 6 mois à moins de 12 mois",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM4",
+            "libCaract": "De 1 an à moins de 2 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM5",
+            "libCaract": "2 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "ONQ",
+            "libCaract": "Ouvriers non qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "OQ",
+            "libCaract": "Ouvriers qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "ENQ",
+            "libCaract": "Employés non qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "EQ",
+            "libCaract": "Employés qualifiés",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "TECH",
+            "libCaract": "Agents de maîtrise / Techniciens",
+            "nombre": 0,
+            "pourcentage": 50.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "CADRE",
+            "libCaract": "Cadres",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL2T",
+            "codeCaract": "NQ",
+            "libCaract": "Ouvriers et Employés non qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL2T",
+            "codeCaract": "Q",
+            "libCaract": "Ouvriers et Employés qualifiés",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP1",
+            "libCaract": "Non renseigné",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP2",
+            "libCaract": "Moins d'un an",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP3",
+            "libCaract": "1 à 2 ans",
+            "nombre": 0,
+            "pourcentage": 50.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP4",
+            "libCaract": "2 à 4 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP5",
+            "libCaract": "4 ans et +",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "THOE",
+            "codeCaract": "THOE",
+            "libCaract": "Travailleurs handicapés bénéficiaires de l'obligation d'emploi",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "JEUNE",
+            "libCaract": "Jeune (-26 ans)",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "SENIOR",
+            "libCaract": "Senior (+55 ans)",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "NONQAL",
+            "libCaract": "Non Qualifié",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "BAC2EP",
+            "libCaract": "Bac+2 et plus",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "EXP2ANS",
+            "libCaract": "Expérience > 2 ans",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "LONGUEDUREE",
+            "libCaract": "Longue durée",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "RSA",
+            "libCaract": "Bénéficiaire du RSA",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "HANDI",
+            "libCaract": "Travailleurs en situation d'handicap",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "QPV",
+            "libCaract": "Quartiers Prioritaires de la Ville",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "EXP1A4",
+            "libCaract": "Expérience de 1 à 4 ans",
+            "nombre": 0,
+            "pourcentage": 50.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "PIC",
+            "libCaract": "Plan d'Investissement Compétences",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC5EP",
+            "libCaract": ">= Bac + 5",
+            "nombre": 0,
+            "pourcentage": 25.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP6",
+            "libCaract": "1 à 4 ans",
+            "nombre": 0,
+            "pourcentage": 50.0,
+            "masque": false
+          }
+        ]
+      },
+      {
+        "datMaj": "2026-03-10T11:18:18.000+01:00",
+        "codeTypeTerritoire": "NAT",
+        "codeTerritoire": "FR",
+        "libTerritoire": "France",
+        "codeTypeActivite": "ROME",
+        "codeActivite": "D1428",
+        "libActivite": "Superviseur / Superviseuse technique et logistique en assistance de régulation médicale",
+        "codeNomenclature": "B",
+        "libNomenclature": "Demandeurs d'Emploi en catégorie B",
+        "codeTypePeriode": "TRIMESTRE",
+        "codePeriode": "2025T4",
+        "libPeriode": "4ème trimestre 2025",
+        "valeurPrincipaleNombre": 0,
+        "valeurSecondairePourcentage": 0.0,
+        "listeValeurParCaract": [
+          {
+            "codeTypeCaract": "GENRE",
+            "codeCaract": "H",
+            "libCaract": "Hommes",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRE",
+            "codeCaract": "F",
+            "libCaract": "Femmes",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE1",
+            "libCaract": "15-24 ans",
+            "nombre": 0,
+            "pourcentage": 50.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE2",
+            "libCaract": "25-49 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE3",
+            "libCaract": "50 ans et +",
+            "nombre": 0,
+            "pourcentage": 50.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE4",
+            "libCaract": "25-34 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE5",
+            "libCaract": "35-49 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE6",
+            "libCaract": "50-54 ans",
+            "nombre": 0,
+            "pourcentage": 50.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE7",
+            "libCaract": "55 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE1",
+            "libCaract": "Hommes - 15-24 ans",
+            "nombre": 0,
+            "pourcentage": 50.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE2",
+            "libCaract": "Hommes - 25-49 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE3",
+            "libCaract": "Hommes - 50 ans et +",
+            "nombre": 0,
+            "pourcentage": 50.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE4",
+            "libCaract": "Hommes - 25-34 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE5",
+            "libCaract": "Hommes - 35-49 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE6",
+            "libCaract": "Hommes - 50-54 ans",
+            "nombre": 0,
+            "pourcentage": 50.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE7",
+            "libCaract": "Hommes - 55 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE1",
+            "libCaract": "Femmes - 15-24 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE2",
+            "libCaract": "Femmes - 25-49 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE3",
+            "libCaract": "Femmes - 50 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE4",
+            "libCaract": "Femmes - 25-34 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE5",
+            "libCaract": "Femmes - 35-49 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE6",
+            "libCaract": "Femmes - 50-54 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE7",
+            "libCaract": "Femmes - 55 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "SANS",
+            "libCaract": "< CAP-BEP",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "CAPBEP",
+            "libCaract": "CAP-BEP",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC",
+            "libCaract": "Bac",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC2",
+            "libCaract": "Bac + 2",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC3EP",
+            "libCaract": "bac+3 / bac+4",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM1",
+            "libCaract": "Moins de 3 mois",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM2",
+            "libCaract": "De 3 mois à moins de 6 mois",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM3",
+            "libCaract": "De 6 mois à moins de 12 mois",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM4",
+            "libCaract": "De 1 an à moins de 2 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM5",
+            "libCaract": "2 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "ONQ",
+            "libCaract": "Ouvriers non qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "OQ",
+            "libCaract": "Ouvriers qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "ENQ",
+            "libCaract": "Employés non qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "EQ",
+            "libCaract": "Employés qualifiés",
+            "nombre": 0,
+            "pourcentage": 50.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "TECH",
+            "libCaract": "Agents de maîtrise / Techniciens",
+            "nombre": 0,
+            "pourcentage": 50.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "CADRE",
+            "libCaract": "Cadres",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL2T",
+            "codeCaract": "NQ",
+            "libCaract": "Ouvriers et Employés non qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL2T",
+            "codeCaract": "Q",
+            "libCaract": "Ouvriers et Employés qualifiés",
+            "nombre": 0,
+            "pourcentage": 50.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP1",
+            "libCaract": "Non renseigné",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP2",
+            "libCaract": "Moins d'un an",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP3",
+            "libCaract": "1 à 2 ans",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP4",
+            "libCaract": "2 à 4 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP5",
+            "libCaract": "4 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "THOE",
+            "codeCaract": "THOE",
+            "libCaract": "Travailleurs handicapés bénéficiaires de l'obligation d'emploi",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "JEUNE",
+            "libCaract": "Jeune (-26 ans)",
+            "nombre": 0,
+            "pourcentage": 50.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "SENIOR",
+            "libCaract": "Senior (+55 ans)",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "NONQAL",
+            "libCaract": "Non Qualifié",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "BAC2EP",
+            "libCaract": "Bac+2 et plus",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "EXP2ANS",
+            "libCaract": "Expérience > 2 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "LONGUEDUREE",
+            "libCaract": "Longue durée",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "RSA",
+            "libCaract": "Bénéficiaire du RSA",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "HANDI",
+            "libCaract": "Travailleurs en situation d'handicap",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "QPV",
+            "libCaract": "Quartiers Prioritaires de la Ville",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "EXP1A4",
+            "libCaract": "Expérience de 1 à 4 ans",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "PIC",
+            "libCaract": "Plan d'Investissement Compétences",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC5EP",
+            "libCaract": ">= Bac + 5",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP6",
+            "libCaract": "1 à 4 ans",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          }
+        ]
+      },
+      {
+        "datMaj": "2026-03-10T11:18:18.000+01:00",
+        "codeTypeTerritoire": "NAT",
+        "codeTerritoire": "FR",
+        "libTerritoire": "France",
+        "codeTypeActivite": "ROME",
+        "codeActivite": "D1428",
+        "libActivite": "Superviseur / Superviseuse technique et logistique en assistance de régulation médicale",
+        "codeNomenclature": "D",
+        "libNomenclature": "Demandeurs d'Emploi en catégorie D",
+        "codeTypePeriode": "TRIMESTRE",
+        "codePeriode": "2025T4",
+        "libPeriode": "4ème trimestre 2025",
+        "valeurPrincipaleNombre": 0,
+        "valeurSecondairePourcentage": 0.0,
+        "listeValeurParCaract": [
+          {
+            "codeTypeCaract": "GENRE",
+            "codeCaract": "H",
+            "libCaract": "Hommes",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRE",
+            "codeCaract": "F",
+            "libCaract": "Femmes",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE1",
+            "libCaract": "15-24 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE2",
+            "libCaract": "25-49 ans",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE3",
+            "libCaract": "50 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE4",
+            "libCaract": "25-34 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE5",
+            "libCaract": "35-49 ans",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE6",
+            "libCaract": "50-54 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "AGE",
+            "codeCaract": "AGE7",
+            "libCaract": "55 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE1",
+            "libCaract": "Hommes - 15-24 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE2",
+            "libCaract": "Hommes - 25-49 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE3",
+            "libCaract": "Hommes - 50 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE4",
+            "libCaract": "Hommes - 25-34 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE5",
+            "libCaract": "Hommes - 35-49 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE6",
+            "libCaract": "Hommes - 50-54 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "H-AGE7",
+            "libCaract": "Hommes - 55 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE1",
+            "libCaract": "Femmes - 15-24 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE2",
+            "libCaract": "Femmes - 25-49 ans",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE3",
+            "libCaract": "Femmes - 50 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE4",
+            "libCaract": "Femmes - 25-34 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE5",
+            "libCaract": "Femmes - 35-49 ans",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE6",
+            "libCaract": "Femmes - 50-54 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "GENRExAGE",
+            "codeCaract": "F-AGE7",
+            "libCaract": "Femmes - 55 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "SANS",
+            "libCaract": "< CAP-BEP",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "CAPBEP",
+            "libCaract": "CAP-BEP",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC",
+            "libCaract": "Bac",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC2",
+            "libCaract": "Bac + 2",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC3EP",
+            "libCaract": "bac+3 / bac+4",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM1",
+            "libCaract": "Moins de 3 mois",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM2",
+            "libCaract": "De 3 mois à moins de 6 mois",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM3",
+            "libCaract": "De 6 mois à moins de 12 mois",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM4",
+            "libCaract": "De 1 an à moins de 2 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CHOMANC",
+            "codeCaract": "CHM5",
+            "libCaract": "2 ans et +",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "ONQ",
+            "libCaract": "Ouvriers non qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "OQ",
+            "libCaract": "Ouvriers qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "ENQ",
+            "libCaract": "Employés non qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "EQ",
+            "libCaract": "Employés qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "TECH",
+            "libCaract": "Agents de maîtrise / Techniciens",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "CADRE",
+            "libCaract": "Cadres",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL2T",
+            "codeCaract": "NQ",
+            "libCaract": "Ouvriers et Employés non qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL2T",
+            "codeCaract": "Q",
+            "libCaract": "Ouvriers et Employés qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP1",
+            "libCaract": "Non renseigné",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP2",
+            "libCaract": "Moins d'un an",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP3",
+            "libCaract": "1 à 2 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP4",
+            "libCaract": "2 à 4 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP5",
+            "libCaract": "4 ans et +",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "THOE",
+            "codeCaract": "THOE",
+            "libCaract": "Travailleurs handicapés bénéficiaires de l'obligation d'emploi",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "JEUNE",
+            "libCaract": "Jeune (-26 ans)",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "SENIOR",
+            "libCaract": "Senior (+55 ans)",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "NONQAL",
+            "libCaract": "Non Qualifié",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "BAC2EP",
+            "libCaract": "Bac+2 et plus",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "EXP2ANS",
+            "libCaract": "Expérience > 2 ans",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "LONGUEDUREE",
+            "libCaract": "Longue durée",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "RSA",
+            "libCaract": "Bénéficiaire du RSA",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "HANDI",
+            "libCaract": "Travailleurs en situation d'handicap",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "QPV",
+            "libCaract": "Quartiers Prioritaires de la Ville",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "EXP1A4",
+            "libCaract": "Expérience de 1 à 4 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "PIC",
+            "libCaract": "Plan d'Investissement Compétences",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC5EP",
+            "libCaract": ">= Bac + 5",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP6",
+            "libCaract": "1 à 4 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          }
+        ]
+      }
+    ]
+  },
+  "offres": {
+    "datMaj": "2026-03-11T07:29:21.000+01:00",
+    "codeIndicateur": "OFF_1",
+    "codeFamille": "OFFRES",
+    "libIndicateur": "Nombre et % d'offres par origine (Pole-emploi / Toutes offres) x caractéristiques, % par activités (Rome, Secteur, Savoir-être, Compétence)",
+    "listeValeursParPeriode": [
+      {
+        "datMaj": "2026-03-10T15:59:35.000+01:00",
+        "codeTypeTerritoire": "NAT",
+        "codeTerritoire": "FR",
+        "libTerritoire": "France",
+        "codeTypeActivite": "ROME",
+        "codeActivite": "D1428",
+        "libActivite": "Superviseur / Superviseuse technique et logistique en assistance de régulation médicale",
+        "codeNomenclature": "PE-CUMUL12MOIS",
+        "libNomenclature": "Cumul 12 derniers mois offres France Travail",
+        "codeTypePeriode": "TRIMESTRE",
+        "codePeriode": "2025T4",
+        "libPeriode": "4ème trimestre 2025",
+        "valeurPrincipaleNombre": 10,
+        "valeurSecondairePourcentage": 0.0,
+        "listeValeurParCaract": [
+          {
+            "codeTypeCaract": "TYPECTR",
+            "codeCaract": "CDI",
+            "libCaract": "CDI",
+            "nombre": 0,
+            "pourcentage": 50.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTR",
+            "codeCaract": "CDD1",
+            "libCaract": "CDD < 1 mois",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTR",
+            "codeCaract": "CDD2",
+            "libCaract": "CDD de 1 à 6 mois",
+            "nombre": 0,
+            "pourcentage": 17.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTR",
+            "codeCaract": "CDD3",
+            "libCaract": "CDD > 6 mois",
+            "nombre": 0,
+            "pourcentage": 17.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTR",
+            "codeCaract": "AUTR",
+            "libCaract": "Autres (intérim, emplois aidés, apprentissage)",
+            "nombre": 0,
+            "pourcentage": 17.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TAILLEETAB",
+            "codeCaract": "ETB1",
+            "libCaract": "0 à 9 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TAILLEETAB",
+            "codeCaract": "ETB2",
+            "libCaract": "10 à 49 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TAILLEETAB",
+            "codeCaract": "ETB3",
+            "libCaract": "50 à 250 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TAILLEETAB",
+            "codeCaract": "ETB4",
+            "libCaract": "250+ salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDI-ETB1",
+            "libCaract": "CDI - 0 à 9 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDD1-ETB1",
+            "libCaract": "CDD < 1 mois - 0 à 9 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDD2-ETB1",
+            "libCaract": "CDD de 1 à 6 mois - 0 à 9 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDD3-ETB1",
+            "libCaract": "CDD > 6 mois - 0 à 9 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "AUTR-ETB1",
+            "libCaract": "Autres (intérim, emplois aidés, apprentissage) - 0 à 9 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDI-ETB2",
+            "libCaract": "CDI - 10 à 49 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDD1-ETB2",
+            "libCaract": "CDD < 1 mois - 10 à 49 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDD2-ETB2",
+            "libCaract": "CDD de 1 à 6 mois - 10 à 49 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDD3-ETB2",
+            "libCaract": "CDD > 6 mois - 10 à 49 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "AUTR-ETB2",
+            "libCaract": "Autres (intérim, emplois aidés, apprentissage) - 10 à 49 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDI-ETB3",
+            "libCaract": "CDI - 50 à 250 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDD1-ETB3",
+            "libCaract": "CDD < 1 mois - 50 à 250 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDD2-ETB3",
+            "libCaract": "CDD de 1 à 6 mois - 50 à 250 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDD3-ETB3",
+            "libCaract": "CDD > 6 mois - 50 à 250 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "AUTR-ETB3",
+            "libCaract": "Autres (intérim, emplois aidés, apprentissage) - 50 à 250 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDI-ETB4",
+            "libCaract": "CDI - 250+ salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDD1-ETB4",
+            "libCaract": "CDD < 1 mois - 250+ salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDD2-ETB4",
+            "libCaract": "CDD de 1 à 6 mois - 250+ salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDD3-ETB4",
+            "libCaract": "CDD > 6 mois - 250+ salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "AUTR-ETB4",
+            "libCaract": "Autres (intérim, emplois aidés, apprentissage) - 250+ salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "SANS",
+            "libCaract": "< CAP-BEP",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "CAPBEP",
+            "libCaract": "CAP-BEP",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC",
+            "libCaract": "Bac",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC2",
+            "libCaract": "Bac + 2",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC3EP",
+            "libCaract": "bac+3 / bac+4",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "SALAIRE",
+            "codeCaract": "SAL_TR1",
+            "libCaract": "salaire <=914",
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "SALAIRE",
+            "codeCaract": "SAL_TR2",
+            "libCaract": "salaire entre 915 et 1219",
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "SALAIRE",
+            "codeCaract": "SAL_TR3",
+            "libCaract": "salaire entre 1220 et 1829",
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "SALAIRE",
+            "codeCaract": "SAL_TR4",
+            "libCaract": "salaire entre 1830 et 3049",
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "SALAIRE",
+            "codeCaract": "SAL_TR5",
+            "libCaract": "salaire >=3050",
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "SALAIRE",
+            "codeCaract": "SAL_TR6",
+            "libCaract": "SALAIRE non renseignée",
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "ONQ",
+            "libCaract": "Ouvriers non qualifiés",
+            "nombre": 0,
+            "pourcentage": 17.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "OQ",
+            "libCaract": "Ouvriers qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "ENQ",
+            "libCaract": "Employés non qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "EQ",
+            "libCaract": "Employés qualifiés",
+            "nombre": 0,
+            "pourcentage": 33.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "TECH",
+            "libCaract": "Agents de maîtrise / Techniciens",
+            "nombre": 0,
+            "pourcentage": 33.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "CADRE",
+            "libCaract": "Cadres",
+            "nombre": 0,
+            "pourcentage": 17.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL2T",
+            "codeCaract": "Q",
+            "libCaract": "Ouvriers et Employés qualifiés",
+            "nombre": 0,
+            "pourcentage": 33.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL2T",
+            "codeCaract": "NQ",
+            "libCaract": "Ouvriers et Employés non qualifiés",
+            "nombre": 0,
+            "pourcentage": 17.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP1",
+            "libCaract": "Non renseigné",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP2",
+            "libCaract": "Moins d'un an",
+            "nombre": 0,
+            "pourcentage": 50.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP3",
+            "libCaract": "1 à 2 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP4",
+            "libCaract": "2 à 4 ans",
+            "nombre": 0,
+            "pourcentage": 17.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP5",
+            "libCaract": "4 ans et +",
+            "nombre": 0,
+            "pourcentage": 33.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "EXP1A4",
+            "libCaract": "Expérience de 1 à 4 ans",
+            "nombre": 0,
+            "pourcentage": 17.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "SALAIRE",
+            "codeCaract": "SAL_D10",
+            "libCaract": "Premier décile",
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "SALAIRE",
+            "codeCaract": "SAL_D90",
+            "libCaract": "Neuvième décile",
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC5EP",
+            "libCaract": ">= Bac + 5",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          }
+        ]
+      },
+      {
+        "datMaj": "2026-03-10T15:59:35.000+01:00",
+        "codeTypeTerritoire": "NAT",
+        "codeTerritoire": "FR",
+        "libTerritoire": "France",
+        "codeTypeActivite": "ROME",
+        "codeActivite": "D1428",
+        "libActivite": "Superviseur / Superviseuse technique et logistique en assistance de régulation médicale",
+        "codeNomenclature": "TOFF-CUMUL12MOIS",
+        "libNomenclature": "Cumul 12 derniers mois toutes offres",
+        "codeTypePeriode": "TRIMESTRE",
+        "codePeriode": "2025T4",
+        "libPeriode": "4ème trimestre 2025",
+        "valeurPrincipaleNombre": 10,
+        "valeurSecondairePourcentage": 0.0,
+        "listeValeurParCaract": [
+          {
+            "codeTypeCaract": "TYPECTR",
+            "codeCaract": "CDI",
+            "libCaract": "CDI",
+            "nombre": 10,
+            "pourcentage": 70.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTR",
+            "codeCaract": "CDD1",
+            "libCaract": "CDD < 1 mois",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTR",
+            "codeCaract": "CDD2",
+            "libCaract": "CDD de 1 à 6 mois",
+            "nombre": 0,
+            "pourcentage": 10.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTR",
+            "codeCaract": "CDD3",
+            "libCaract": "CDD > 6 mois",
+            "nombre": 0,
+            "pourcentage": 10.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTR",
+            "codeCaract": "AUTR",
+            "libCaract": "Autres (intérim, emplois aidés, apprentissage)",
+            "nombre": 0,
+            "pourcentage": 10.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TAILLEETAB",
+            "codeCaract": "ETB1",
+            "libCaract": "0 à 9 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TAILLEETAB",
+            "codeCaract": "ETB2",
+            "libCaract": "10 à 49 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TAILLEETAB",
+            "codeCaract": "ETB3",
+            "libCaract": "50 à 250 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TAILLEETAB",
+            "codeCaract": "ETB4",
+            "libCaract": "250+ salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDI-ETB1",
+            "libCaract": "CDI - 0 à 9 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDD1-ETB1",
+            "libCaract": "CDD < 1 mois - 0 à 9 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDD2-ETB1",
+            "libCaract": "CDD de 1 à 6 mois - 0 à 9 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDD3-ETB1",
+            "libCaract": "CDD > 6 mois - 0 à 9 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "AUTR-ETB1",
+            "libCaract": "Autres (intérim, emplois aidés, apprentissage) - 0 à 9 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDI-ETB2",
+            "libCaract": "CDI - 10 à 49 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDD1-ETB2",
+            "libCaract": "CDD < 1 mois - 10 à 49 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDD2-ETB2",
+            "libCaract": "CDD de 1 à 6 mois - 10 à 49 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDD3-ETB2",
+            "libCaract": "CDD > 6 mois - 10 à 49 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "AUTR-ETB2",
+            "libCaract": "Autres (intérim, emplois aidés, apprentissage) - 10 à 49 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDI-ETB3",
+            "libCaract": "CDI - 50 à 250 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDD1-ETB3",
+            "libCaract": "CDD < 1 mois - 50 à 250 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDD2-ETB3",
+            "libCaract": "CDD de 1 à 6 mois - 50 à 250 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDD3-ETB3",
+            "libCaract": "CDD > 6 mois - 50 à 250 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "AUTR-ETB3",
+            "libCaract": "Autres (intérim, emplois aidés, apprentissage) - 50 à 250 salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDI-ETB4",
+            "libCaract": "CDI - 250+ salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDD1-ETB4",
+            "libCaract": "CDD < 1 mois - 250+ salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDD2-ETB4",
+            "libCaract": "CDD de 1 à 6 mois - 250+ salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "CDD3-ETB4",
+            "libCaract": "CDD > 6 mois - 250+ salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "TYPECTRxTAILLEETAB",
+            "codeCaract": "AUTR-ETB4",
+            "libCaract": "Autres (intérim, emplois aidés, apprentissage) - 250+ salariés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "SANS",
+            "libCaract": "< CAP-BEP",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "CAPBEP",
+            "libCaract": "CAP-BEP",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC",
+            "libCaract": "Bac",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC2",
+            "libCaract": "Bac + 2",
+            "nombre": 0,
+            "pourcentage": 100.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC3EP",
+            "libCaract": "bac+3 / bac+4",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "SALAIRE",
+            "codeCaract": "SAL_TR1",
+            "libCaract": "salaire <=914",
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "SALAIRE",
+            "codeCaract": "SAL_TR2",
+            "libCaract": "salaire entre 915 et 1219",
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "SALAIRE",
+            "codeCaract": "SAL_TR3",
+            "libCaract": "salaire entre 1220 et 1829",
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "SALAIRE",
+            "codeCaract": "SAL_TR4",
+            "libCaract": "salaire entre 1830 et 3049",
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "SALAIRE",
+            "codeCaract": "SAL_TR5",
+            "libCaract": "salaire >=3050",
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "SALAIRE",
+            "codeCaract": "SAL_TR6",
+            "libCaract": "SALAIRE non renseignée",
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "ONQ",
+            "libCaract": "Ouvriers non qualifiés",
+            "nombre": 0,
+            "pourcentage": 10.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "OQ",
+            "libCaract": "Ouvriers qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "ENQ",
+            "libCaract": "Employés non qualifiés",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "EQ",
+            "libCaract": "Employés qualifiés",
+            "nombre": 0,
+            "pourcentage": 20.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "TECH",
+            "libCaract": "Agents de maîtrise / Techniciens",
+            "nombre": 0,
+            "pourcentage": 20.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL",
+            "codeCaract": "CADRE",
+            "libCaract": "Cadres",
+            "nombre": 0,
+            "pourcentage": 10.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL2T",
+            "codeCaract": "Q",
+            "libCaract": "Ouvriers et Employés qualifiés",
+            "nombre": 0,
+            "pourcentage": 20.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVQUAL2T",
+            "codeCaract": "NQ",
+            "libCaract": "Ouvriers et Employés non qualifiés",
+            "nombre": 0,
+            "pourcentage": 10.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP1",
+            "libCaract": "Non renseigné",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP2",
+            "libCaract": "Moins d'un an",
+            "nombre": 0,
+            "pourcentage": 30.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP3",
+            "libCaract": "1 à 2 ans",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP4",
+            "libCaract": "2 à 4 ans",
+            "nombre": 0,
+            "pourcentage": 10.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVEXP",
+            "codeCaract": "EXP5",
+            "libCaract": "4 ans et +",
+            "nombre": 0,
+            "pourcentage": 20.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "CPDE",
+            "codeCaract": "EXP1A4",
+            "libCaract": "Expérience de 1 à 4 ans",
+            "nombre": 0,
+            "pourcentage": 10.0,
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "SALAIRE",
+            "codeCaract": "SAL_D10",
+            "libCaract": "Premier décile",
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "SALAIRE",
+            "codeCaract": "SAL_D90",
+            "libCaract": "Neuvième décile",
+            "masque": false
+          },
+          {
+            "codeTypeCaract": "NIVFORM",
+            "codeCaract": "BAC5EP",
+            "libCaract": ">= Bac + 5",
+            "nombre": 0,
+            "pourcentage": 0.0,
+            "masque": false
+          }
+        ]
+      }
+    ]
+  },
+  "tensions": {
+    "datMaj": "2026-03-11T07:29:22.000+01:00",
+    "codeIndicateur": "PERSP_2",
+    "codeFamille": "PERSPECTIVES",
+    "libIndicateur": "PERSPECTIVES Employeur",
+    "listeValeursParPeriode": [
+      {
+        "datMaj": "2026-03-09T11:54:30.000+01:00",
+        "codeTypeTerritoire": "NAT",
+        "codeTerritoire": "FR",
+        "libTerritoire": "France",
+        "codeTypeActivite": "ROME",
+        "codeActivite": "D1428",
+        "libActivite": "Superviseur / Superviseuse technique et logistique en assistance de régulation médicale",
+        "codeNomenclature": "ATTR_SALARIALE",
+        "libNomenclature": "Attractivité salariale",
+        "codeTypePeriode": "ANNEE",
+        "codePeriode": "2024",
+        "libPeriode": "ANNEE 2024",
+        "valeurPrincipaleDecimale": 0.6,
+        "valeurPrincipaleNombre": 3
+      },
+      {
+        "datMaj": "2026-03-09T11:54:30.000+01:00",
+        "codeTypeTerritoire": "NAT",
+        "codeTerritoire": "FR",
+        "libTerritoire": "France",
+        "codeTypeActivite": "ROME",
+        "codeActivite": "D1428",
+        "libActivite": "Superviseur / Superviseuse technique et logistique en assistance de régulation médicale",
+        "codeNomenclature": "COND_TRAVAIL",
+        "libNomenclature": "Conditions de travail",
+        "codeTypePeriode": "ANNEE",
+        "codePeriode": "2024",
+        "libPeriode": "ANNEE 2024",
+        "valeurPrincipaleDecimale": -0.09,
+        "valeurPrincipaleNombre": 2
+      },
+      {
+        "datMaj": "2026-03-09T11:54:30.000+01:00",
+        "codeTypeTerritoire": "NAT",
+        "codeTerritoire": "FR",
+        "libTerritoire": "France",
+        "codeTypeActivite": "ROME",
+        "codeActivite": "D1428",
+        "libActivite": "Superviseur / Superviseuse technique et logistique en assistance de régulation médicale",
+        "codeNomenclature": "DUR_EMPL",
+        "libNomenclature": "Durabilité de l'emploi",
+        "codeTypePeriode": "ANNEE",
+        "codePeriode": "2024",
+        "libPeriode": "ANNEE 2024",
+        "valeurPrincipaleDecimale": -0.27,
+        "valeurPrincipaleNombre": 1
+      },
+      {
+        "datMaj": "2026-03-09T11:54:30.000+01:00",
+        "codeTypeTerritoire": "NAT",
+        "codeTerritoire": "FR",
+        "libTerritoire": "France",
+        "codeTypeActivite": "ROME",
+        "codeActivite": "D1428",
+        "libActivite": "Superviseur / Superviseuse technique et logistique en assistance de régulation médicale",
+        "codeNomenclature": "INT_EMB",
+        "libNomenclature": "Intensité d'embauche",
+        "codeTypePeriode": "ANNEE",
+        "codePeriode": "2024",
+        "libPeriode": "ANNEE 2024",
+        "valeurPrincipaleDecimale": 1.77,
+        "valeurPrincipaleNombre": 5
+      },
+      {
+        "datMaj": "2026-03-09T11:54:30.000+01:00",
+        "codeTypeTerritoire": "NAT",
+        "codeTerritoire": "FR",
+        "libTerritoire": "France",
+        "codeTypeActivite": "ROME",
+        "codeActivite": "D1428",
+        "libActivite": "Superviseur / Superviseuse technique et logistique en assistance de régulation médicale",
+        "codeNomenclature": "MAIN_OEUVRE",
+        "libNomenclature": "Manque de main d'oeuvre",
+        "codeTypePeriode": "ANNEE",
+        "codePeriode": "2024",
+        "libPeriode": "ANNEE 2024",
+        "valeurPrincipaleDecimale": 0.04,
+        "valeurPrincipaleNombre": 2
+      },
+      {
+        "datMaj": "2026-03-09T11:54:28.000+01:00",
+        "codeTypeTerritoire": "NAT",
+        "codeTerritoire": "FR",
+        "libTerritoire": "France",
+        "codeTypeActivite": "ROME",
+        "codeActivite": "D1428",
+        "libActivite": "Superviseur / Superviseuse technique et logistique en assistance de régulation médicale",
+        "codeNomenclature": "MISMATCH_GEO",
+        "libNomenclature": "Inadéquation géographique",
+        "codeTypePeriode": "ANNEE",
+        "codePeriode": "2024",
+        "libPeriode": "ANNEE 2024",
+        "valeurPrincipaleDecimale": -0.34,
+        "valeurPrincipaleNombre": 2
+      },
+      {
+        "datMaj": "2026-03-09T11:54:30.000+01:00",
+        "codeTypeTerritoire": "NAT",
+        "codeTerritoire": "FR",
+        "libTerritoire": "France",
+        "codeTypeActivite": "ROME",
+        "codeActivite": "D1428",
+        "libActivite": "Superviseur / Superviseuse technique et logistique en assistance de régulation médicale",
+        "codeNomenclature": "PERSPECTIVE",
+        "libNomenclature": "Indicateur principal tension",
+        "codeTypePeriode": "ANNEE",
+        "codePeriode": "2024",
+        "libPeriode": "ANNEE 2024",
+        "valeurPrincipaleDecimale": 0.13,
+        "valeurPrincipaleNombre": 2
+      },
+      {
+        "datMaj": "2026-03-09T11:54:30.000+01:00",
+        "codeTypeTerritoire": "NAT",
+        "codeTerritoire": "FR",
+        "libTerritoire": "France",
+        "codeTypeActivite": "ROME",
+        "codeActivite": "D1428",
+        "libActivite": "Superviseur / Superviseuse technique et logistique en assistance de régulation médicale",
+        "codeNomenclature": "SPECIF_FORM_EMPL",
+        "libNomenclature": "Lien formation - métier",
+        "codeTypePeriode": "ANNEE",
+        "codePeriode": "2024",
+        "libPeriode": "ANNEE 2024",
+        "valeurPrincipaleDecimale": 0.22,
+        "valeurPrincipaleNombre": 2
+      }
+    ]
+  }
+}

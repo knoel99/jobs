@@ -1,0 +1,790 @@
+{
+  "metier": {
+    "obsolete": false,
+    "code": "A1440",
+    "libelle": "Cultivateur urbain / Cultivatrice urbaine",
+    "definition": "Le cultivateur urbain cultive des plantes, des fruits et des légumes en milieu urbain et péri-urbain en utilisant des techniques adaptées à l'espace disponible et contribue ainsi au verdissement des villes.\\nParticipe à la planification et à l'aménagement des espaces de culture sur les toitures, terrasses ou jardins partagés\\nSélectionne et cultive des plantes adaptées au contexte urbain \\nS'assure de la qualité des produits cultivés et respecte les normes environnementales et de sécurité \\nSensibilise la communauté à l'importance de l'agriculture urbaine et participe à des projets éducatifs \\nDéveloppe des partenariats avec des collectivités locales, des entreprises et des associations pour soutenir des initiatives agricoles innovantes",
+    "accesEmploi": "Cet emploi est accessible avec un diplôme dans les domaines de l'agriculture, de l'aménagement paysager ou de l'agronomie et cultures durables.",
+    "riasecMajeur": "R",
+    "transitionEcologique": true,
+    "transitionEcologiqueDetaillee": "EMPLOI_VERT",
+    "transitionNumerique": false,
+    "domaineProfessionnel": {
+      "code": "A14",
+      "libelle": "Production",
+      "grandDomaine": {
+        "code": "A",
+        "libelle": "Agriculture et Pêche, Espaces naturels et Espaces verts, Soins aux animaux"
+      }
+    },
+    "appellations": [
+      {
+        "code": "509751",
+        "libelle": "Cultivateur urbain / Cultivatrice urbaine",
+        "libelleCourt": "Cultivateur urbain / Cultivatrice urbaine",
+        "emploiCadre": false,
+        "emploiReglemente": false,
+        "transitionEcologique": true,
+        "transitionEcologiqueDetaillee": "EMPLOI_VERT",
+        "transitionNumerique": false,
+        "transitionDemographique": false,
+        "classification": "PRINCIPALE",
+        "competencesCles": []
+      }
+    ],
+    "themes": [
+      {
+        "code": "01",
+        "libelle": "Métiers de l'environnement et du développement durable"
+      }
+    ],
+    "centresInterets": [
+      {
+        "code": "9",
+        "libelle": "J'aime être au contact de la nature"
+      },
+      {
+        "code": "14",
+        "libelle": "J'aime le travail manuel"
+      },
+      {
+        "code": "20",
+        "libelle": "Je souhaite contribuer à la protection de l'environnement"
+      }
+    ],
+    "centresInteretsLies": [
+      {
+        "centreInteret": {
+          "code": "9",
+          "libelle": "J'aime être au contact de la nature"
+        },
+        "principal": true
+      },
+      {
+        "centreInteret": {
+          "code": "14",
+          "libelle": "J'aime le travail manuel"
+        },
+        "principal": false
+      },
+      {
+        "centreInteret": {
+          "code": "20",
+          "libelle": "Je souhaite contribuer à la protection de l'environnement"
+        },
+        "principal": false
+      }
+    ],
+    "secteursActivites": [
+      {
+        "code": "79",
+        "libelle": "Agriculture et élevage"
+      },
+      {
+        "code": "80",
+        "libelle": "Environnement"
+      },
+      {
+        "code": "114",
+        "libelle": "Agriculture, sylviculture",
+        "secteurActivite": {
+          "code": "79",
+          "libelle": "Agriculture et élevage"
+        }
+      }
+    ],
+    "secteursActivitesLies": [
+      {
+        "secteurActivite": {
+          "code": "79",
+          "libelle": "Agriculture et élevage"
+        },
+        "principal": true
+      },
+      {
+        "secteurActivite": {
+          "code": "80",
+          "libelle": "Environnement"
+        },
+        "principal": false
+      },
+      {
+        "secteurActivite": {
+          "code": "114",
+          "libelle": "Agriculture, sylviculture",
+          "secteurActivite": {
+            "code": "79",
+            "libelle": "Agriculture et élevage"
+          }
+        },
+        "principal": false
+      }
+    ],
+    "competencesMobilisees": [
+      {
+        "type": "SAVOIR",
+        "code": "100030",
+        "libelle": "Physiologie végétale",
+        "codeOgr": "100030"
+      },
+      {
+        "type": "SAVOIR",
+        "code": "100114",
+        "libelle": "Agriculture biologique",
+        "codeOgr": "100114"
+      },
+      {
+        "type": "SAVOIR",
+        "code": "100158",
+        "libelle": "Botanique",
+        "codeOgr": "100158"
+      },
+      {
+        "type": "SAVOIR",
+        "code": "100359",
+        "libelle": "Règles d'hygiène et de sécurité alimentaire",
+        "codeOgr": "100359"
+      },
+      {
+        "type": "SAVOIR",
+        "code": "101869",
+        "libelle": "Réglementation phytosanitaire",
+        "codeOgr": "101869"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "119210",
+        "libelle": "Effectuer la maintenance de premier niveau des outillages et des équipements",
+        "codeOgr": "119210",
+        "riasecMajeur": "R"
+      },
+      {
+        "type": "SAVOIR",
+        "code": "121998",
+        "libelle": "Utilisation de produits phytosanitaires",
+        "codeOgr": "121998"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "122725",
+        "libelle": "Installer du matériel de plantation",
+        "codeOgr": "122725",
+        "riasecMajeur": "R"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "122730",
+        "libelle": "Préparer les sols, les plantations (épandage, semis, etc.)",
+        "codeOgr": "122730",
+        "riasecMajeur": "R"
+      },
+      {
+        "type": "SAVOIR",
+        "code": "123060",
+        "libelle": "Utilisation d'outils agricoles",
+        "codeOgr": "123060"
+      },
+      {
+        "type": "MACRO-SAVOIR-FAIRE",
+        "code": "300265",
+        "libelle": "Charger, décharger, manutentionner des produits",
+        "codeOgr": "300265",
+        "riasecMajeur": "R"
+      },
+      {
+        "type": "MACRO-SAVOIR-FAIRE",
+        "code": "300280",
+        "libelle": "Organiser le traitement des commandes",
+        "codeOgr": "300280",
+        "riasecMajeur": "C",
+        "riasecMineur": "E"
+      },
+      {
+        "type": "MACRO-SAVOIR-FAIRE",
+        "code": "300305",
+        "libelle": "Effectuer le suivi des commandes, la facturation",
+        "codeOgr": "300305",
+        "riasecMajeur": "C"
+      },
+      {
+        "type": "MACRO-SAVOIR-FAIRE",
+        "code": "300307",
+        "libelle": "Assurer la gestion administrative et financière d'une activité",
+        "codeOgr": "300307",
+        "riasecMajeur": "C",
+        "riasecMineur": "E"
+      },
+      {
+        "type": "MACRO-SAVOIR-FAIRE",
+        "code": "300440",
+        "libelle": "Animer, coordonner une équipe",
+        "codeOgr": "300440",
+        "riasecMajeur": "E"
+      },
+      {
+        "type": "MACRO-SAVOIR-FAIRE",
+        "code": "300446",
+        "libelle": "Respecter les règles de Qualité, Hygiène, Sécurité, Santé et Environnement (QHSSE)",
+        "codeOgr": "300446",
+        "riasecMajeur": "C"
+      },
+      {
+        "type": "MACRO-SAVOIR-ETRE-PROFESSIONNEL",
+        "code": "300460",
+        "libelle": "Faire preuve d'autonomie",
+        "codeOgr": "300460"
+      },
+      {
+        "type": "MACRO-SAVOIR-ETRE-PROFESSIONNEL",
+        "code": "300479",
+        "libelle": "Etre ouvert aux changements",
+        "codeOgr": "300479"
+      },
+      {
+        "type": "MACRO-SAVOIR-ETRE-PROFESSIONNEL",
+        "code": "300497",
+        "libelle": "Faire preuve de créativité, d'inventivité",
+        "codeOgr": "300497",
+        "riasecMajeur": "A",
+        "riasecMineur": "I"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "403507",
+        "libelle": "Planifier la production, estimer les besoins en matériel, matériaux et main-d'œuvre, afin de respecter les contraintes de coûts et les délais de réalisation",
+        "codeOgr": "403507"
+      },
+      {
+        "type": "SAVOIR",
+        "code": "403970",
+        "libelle": "CAP agricole métiers de l'agriculture",
+        "codeOgr": "403970"
+      },
+      {
+        "type": "SAVOIR",
+        "code": "403986",
+        "libelle": "CAP agricole jardinier paysagiste",
+        "codeOgr": "403986"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "483174",
+        "libelle": "Gérer les déchets verts selon les normes environnementales",
+        "codeOgr": "483174"
+      },
+      {
+        "type": "SAVOIR",
+        "code": "490652",
+        "libelle": "Bac pro aménagements paysagers",
+        "codeOgr": "490652"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "484266",
+        "libelle": "Planifier des rotations de cultures pour maintenir la fertilité du sol",
+        "codeOgr": "484266"
+      },
+      {
+        "type": "SAVOIR",
+        "code": "490657",
+        "libelle": "BTSA aménagements paysagers",
+        "codeOgr": "490657"
+      },
+      {
+        "type": "SAVOIR",
+        "code": "479035",
+        "libelle": "Caractéristiques des plantes et végétaux",
+        "codeOgr": "479035"
+      },
+      {
+        "type": "SAVOIR",
+        "code": "490653",
+        "libelle": "Bac pro conduite de productions horticoles (arbres, arbustes, fruits, fleurs, légumes)",
+        "codeOgr": "490653"
+      },
+      {
+        "type": "SAVOIR",
+        "code": "480596",
+        "libelle": "Planification des rotations de cultures",
+        "codeOgr": "480596"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "487245",
+        "libelle": "Etablir des partenariats avec des distributeurs",
+        "codeOgr": "487245"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "486576",
+        "libelle": "Développer des partenariats avec des ONG environnementales, écoles, collectifs de citoyens et autres parties prenantes",
+        "codeOgr": "486576"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "122162",
+        "libelle": "Proposer une dégustation à des clients",
+        "codeOgr": "122162",
+        "riasecMajeur": "E"
+      },
+      {
+        "type": "SAVOIR",
+        "code": "480950",
+        "libelle": "Gestion de la biodiversité en milieu urbain",
+        "codeOgr": "480950"
+      },
+      {
+        "type": "SAVOIR",
+        "code": "480948",
+        "libelle": "Conception de jardins écologiques",
+        "codeOgr": "480948"
+      },
+      {
+        "type": "SAVOIR",
+        "code": "478152",
+        "libelle": "Gestion des déchets organiques",
+        "codeOgr": "478152"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "500946",
+        "libelle": "Former les nouveaux employés aux techniques de culture",
+        "codeOgr": "500946"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "500941",
+        "libelle": "Optimiser l'espace de culture pour maximiser la production",
+        "codeOgr": "500941"
+      },
+      {
+        "type": "SAVOIR",
+        "code": "497954",
+        "libelle": "Techniques de compostage",
+        "codeOgr": "497954"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "499801",
+        "libelle": "Sélectionner et préparer les boutures pour la plantation",
+        "codeOgr": "499801"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "507263",
+        "libelle": "Analyser les sols pour déterminer les besoins en nutriments des cultures",
+        "codeOgr": "507263"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "511821",
+        "libelle": "Vendre les produits directement aux consommateurs ou à un réseau de commerçants ou restaurateurs locaux",
+        "codeOgr": "511821"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "500268",
+        "libelle": "Organiser des visites éducatives sur l'exploitation",
+        "codeOgr": "500268"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "502648",
+        "libelle": "Analyser les besoins en irrigation des cultures",
+        "codeOgr": "502648"
+      },
+      {
+        "type": "SAVOIR",
+        "code": "499269",
+        "libelle": "Utilisation de substrats de culture alternatifs",
+        "codeOgr": "499269"
+      }
+    ],
+    "competencesMobiliseesPrincipales": [
+      {
+        "type": "SAVOIR",
+        "code": "100011",
+        "libelle": "Techniques culturales",
+        "codeOgr": "100011"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "121752",
+        "libelle": "Commercialiser les produits d'une exploitation",
+        "codeOgr": "121752"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "122573",
+        "libelle": "Planifier une opération de semis, de traitement ou de récolte sur un site d'exploitation",
+        "codeOgr": "122573"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "122833",
+        "libelle": "Régler un équipement d'irrigation et d'arrosage",
+        "codeOgr": "122833"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "122853",
+        "libelle": "Récolter un produit à maturité et selon les consignes de calibrage",
+        "codeOgr": "122853",
+        "riasecMajeur": "R"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "123046",
+        "libelle": "Surveiller l'état d'une plantation",
+        "codeOgr": "123046",
+        "riasecMajeur": "R"
+      },
+      {
+        "type": "MACRO-SAVOIR-FAIRE",
+        "code": "300255",
+        "libelle": "Contrôler la qualité et la conformité d'un produit",
+        "codeOgr": "300255",
+        "riasecMajeur": "C"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "489495",
+        "libelle": "Déterminer l'implantation des massifs, concevoir des aménagements extérieurs et des espaces végétalisés",
+        "codeOgr": "489495"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "483172",
+        "libelle": "Appliquer des traitements phytosanitaires selon la réglementation",
+        "codeOgr": "483172"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "510979",
+        "libelle": "Conditionner les produits dans des caisses ou des conteneurs pour faciliter leur transport sans les abimer",
+        "codeOgr": "510979"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "511159",
+        "libelle": "Trier les végétaux récoltés en fonction de leur utilisation future",
+        "codeOgr": "511159"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "502575",
+        "libelle": "Promouvoir les produits de l'agriculture urbaine localement",
+        "codeOgr": "502575"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "500263",
+        "libelle": "Etablir des partenariats avec des fournisseurs de semences écologiques",
+        "codeOgr": "500263"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "502573",
+        "libelle": "Sélectionner des semences adaptées à l'environnement urbain",
+        "codeOgr": "502573"
+      }
+    ],
+    "competencesMobiliseesEmergentes": [
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "400415",
+        "libelle": "Sensibiliser à l'environnement et promouvoir le développement durable",
+        "codeOgr": "400415",
+        "riasecMajeur": "S"
+      },
+      {
+        "type": "SAVOIR",
+        "code": "479040",
+        "libelle": "Gestion des ressources en eau",
+        "codeOgr": "479040"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "484267",
+        "libelle": "Concevoir des jardins qui garantissent la biodiversité",
+        "codeOgr": "484267"
+      },
+      {
+        "type": "SAVOIR",
+        "code": "479819",
+        "libelle": "Sensibilisation aux enjeux environnementaux urbains",
+        "codeOgr": "479819"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "500261",
+        "libelle": "Utiliser des systèmes d'arrosage économes en eau",
+        "codeOgr": "500261"
+      },
+      {
+        "type": "COMPETENCE-DETAILLEE",
+        "code": "507143",
+        "libelle": "Promouvoir les pratiques écologiques dans les processus de production",
+        "codeOgr": "507143"
+      },
+      {
+        "type": "SAVOIR",
+        "code": "493619",
+        "libelle": "Techniques de culture innovantes (hydroponie, culture en colonnes, etc.)",
+        "codeOgr": "493619"
+      }
+    ],
+    "divisionsNaf": [
+      {
+        "code": "01",
+        "libelle": "Culture et production animale, chasse et services annexes"
+      },
+      {
+        "code": "81",
+        "libelle": "Services relatifs aux bâtiments et aménagement paysager"
+      },
+      {
+        "code": "94",
+        "libelle": "Activités des organisations associatives"
+      }
+    ],
+    "formacodes": [
+      {
+        "code": "21027",
+        "libelle": "Horticulture"
+      },
+      {
+        "code": "21040",
+        "libelle": "Polyculture"
+      },
+      {
+        "code": "21046",
+        "libelle": "Travaux paysagers"
+      }
+    ],
+    "contextesTravail": [
+      {
+        "code": "23374",
+        "libelle": "Travail le samedi",
+        "categorie": "HORAIRE_ET_DUREE_TRAVAIL"
+      },
+      {
+        "code": "38055",
+        "libelle": "Port d'équipement de protection individuelle (EPI) : gants, chaussures, casque, protections auditives",
+        "categorie": "CONDITIONS_TRAVAIL"
+      },
+      {
+        "code": "300782",
+        "libelle": "En grande hauteur",
+        "categorie": "CONDITIONS_TRAVAIL"
+      },
+      {
+        "code": "300783",
+        "libelle": "En extérieur",
+        "categorie": "CONDITIONS_TRAVAIL"
+      },
+      {
+        "code": "300795",
+        "libelle": "Port et manipulation de charges lourdes ou encombrantes",
+        "categorie": "CONDITIONS_TRAVAIL"
+      },
+      {
+        "code": "300800",
+        "libelle": "Station debout prolongée",
+        "categorie": "CONDITIONS_TRAVAIL"
+      },
+      {
+        "code": "300849",
+        "libelle": "Association",
+        "categorie": "TYPE_STRUCTURE_ACCUEIL"
+      },
+      {
+        "code": "403095",
+        "libelle": "Travail selon un rythme irrégulier et des pics d'activité",
+        "categorie": "HORAIRE_ET_DUREE_TRAVAIL"
+      },
+      {
+        "code": "403103",
+        "libelle": "Salarié secteur privé (CDI, CDD)",
+        "categorie": "STATUT_EMPLOI"
+      },
+      {
+        "code": "403106",
+        "libelle": "Travailleur indépendant",
+        "categorie": "STATUT_EMPLOI"
+      },
+      {
+        "code": "403960",
+        "libelle": "Exploitation agricole",
+        "categorie": "TYPE_STRUCTURE_ACCUEIL"
+      },
+      {
+        "code": "405287",
+        "libelle": "Economie Sociale et Solidaire",
+        "categorie": "TYPE_STRUCTURE_ACCUEIL"
+      },
+      {
+        "code": "490503",
+        "libelle": "Clientèle de particuliers",
+        "categorie": "TYPE_BENEFICIAIRE"
+      },
+      {
+        "code": "490504",
+        "libelle": "Clientèle de professionnels",
+        "categorie": "TYPE_BENEFICIAIRE"
+      }
+    ],
+    "emploiCadre": false,
+    "emploiReglemente": false,
+    "transitionDemographique": false
+  },
+  "salaires": {},
+  "demandeurs": {
+    "datMaj": "2026-03-11T07:29:21.000+01:00",
+    "codeIndicateur": "DE_1",
+    "codeFamille": "DEMANDEURS",
+    "libIndicateur": "Nombre et % de DE par catégories x caractéristiques, % par activités (Rome, Compétence)"
+  },
+  "offres": {
+    "datMaj": "2026-03-11T07:29:21.000+01:00",
+    "codeIndicateur": "OFF_1",
+    "codeFamille": "OFFRES",
+    "libIndicateur": "Nombre et % d'offres par origine (Pole-emploi / Toutes offres) x caractéristiques, % par activités (Rome, Secteur, Savoir-être, Compétence)"
+  },
+  "tensions": {
+    "datMaj": "2026-03-11T07:29:22.000+01:00",
+    "codeIndicateur": "PERSP_2",
+    "codeFamille": "PERSPECTIVES",
+    "libIndicateur": "PERSPECTIVES Employeur",
+    "listeValeursParPeriode": [
+      {
+        "datMaj": "2026-03-09T11:54:28.000+01:00",
+        "codeTypeTerritoire": "NAT",
+        "codeTerritoire": "FR",
+        "libTerritoire": "France",
+        "codeTypeActivite": "ROME",
+        "codeActivite": "A1440",
+        "libActivite": "Cultivateur urbain / Cultivatrice urbaine",
+        "codeNomenclature": "ATTR_SALARIALE",
+        "libNomenclature": "Attractivité salariale",
+        "codeTypePeriode": "ANNEE",
+        "codePeriode": "2024",
+        "libPeriode": "ANNEE 2024",
+        "valeurPrincipaleDecimale": 1.18,
+        "valeurPrincipaleNombre": 5
+      },
+      {
+        "datMaj": "2026-03-09T11:54:28.000+01:00",
+        "codeTypeTerritoire": "NAT",
+        "codeTerritoire": "FR",
+        "libTerritoire": "France",
+        "codeTypeActivite": "ROME",
+        "codeActivite": "A1440",
+        "libActivite": "Cultivateur urbain / Cultivatrice urbaine",
+        "codeNomenclature": "COND_TRAVAIL",
+        "libNomenclature": "Conditions de travail",
+        "codeTypePeriode": "ANNEE",
+        "codePeriode": "2024",
+        "libPeriode": "ANNEE 2024",
+        "valeurPrincipaleDecimale": 0.41,
+        "valeurPrincipaleNombre": 2
+      },
+      {
+        "datMaj": "2026-03-09T11:54:30.000+01:00",
+        "codeTypeTerritoire": "NAT",
+        "codeTerritoire": "FR",
+        "libTerritoire": "France",
+        "codeTypeActivite": "ROME",
+        "codeActivite": "A1440",
+        "libActivite": "Cultivateur urbain / Cultivatrice urbaine",
+        "codeNomenclature": "DUR_EMPL",
+        "libNomenclature": "Durabilité de l'emploi",
+        "codeTypePeriode": "ANNEE",
+        "codePeriode": "2024",
+        "libPeriode": "ANNEE 2024",
+        "valeurPrincipaleDecimale": 1.8,
+        "valeurPrincipaleNombre": 5
+      },
+      {
+        "datMaj": "2026-03-09T11:54:28.000+01:00",
+        "codeTypeTerritoire": "NAT",
+        "codeTerritoire": "FR",
+        "libTerritoire": "France",
+        "codeTypeActivite": "ROME",
+        "codeActivite": "A1440",
+        "libActivite": "Cultivateur urbain / Cultivatrice urbaine",
+        "codeNomenclature": "INT_EMB",
+        "libNomenclature": "Intensité d'embauche",
+        "codeTypePeriode": "ANNEE",
+        "codePeriode": "2024",
+        "libPeriode": "ANNEE 2024",
+        "valeurPrincipaleDecimale": 2.98,
+        "valeurPrincipaleNombre": 5
+      },
+      {
+        "datMaj": "2026-03-09T11:54:30.000+01:00",
+        "codeTypeTerritoire": "NAT",
+        "codeTerritoire": "FR",
+        "libTerritoire": "France",
+        "codeTypeActivite": "ROME",
+        "codeActivite": "A1440",
+        "libActivite": "Cultivateur urbain / Cultivatrice urbaine",
+        "codeNomenclature": "MAIN_OEUVRE",
+        "libNomenclature": "Manque de main d'oeuvre",
+        "codeTypePeriode": "ANNEE",
+        "codePeriode": "2024",
+        "libPeriode": "ANNEE 2024",
+        "valeurPrincipaleDecimale": -2.19,
+        "valeurPrincipaleNombre": 1
+      },
+      {
+        "datMaj": "2026-03-09T11:54:28.000+01:00",
+        "codeTypeTerritoire": "NAT",
+        "codeTerritoire": "FR",
+        "libTerritoire": "France",
+        "codeTypeActivite": "ROME",
+        "codeActivite": "A1440",
+        "libActivite": "Cultivateur urbain / Cultivatrice urbaine",
+        "codeNomenclature": "MISMATCH_GEO",
+        "libNomenclature": "Inadéquation géographique",
+        "codeTypePeriode": "ANNEE",
+        "codePeriode": "2024",
+        "libPeriode": "ANNEE 2024",
+        "valeurPrincipaleDecimale": 0.96,
+        "valeurPrincipaleNombre": 5
+      },
+      {
+        "datMaj": "2026-03-09T11:54:30.000+01:00",
+        "codeTypeTerritoire": "NAT",
+        "codeTerritoire": "FR",
+        "libTerritoire": "France",
+        "codeTypeActivite": "ROME",
+        "codeActivite": "A1440",
+        "libActivite": "Cultivateur urbain / Cultivatrice urbaine",
+        "codeNomenclature": "PERSPECTIVE",
+        "libNomenclature": "Indicateur principal tension",
+        "codeTypePeriode": "ANNEE",
+        "codePeriode": "2024",
+        "libPeriode": "ANNEE 2024",
+        "valeurPrincipaleDecimale": 0.13,
+        "valeurPrincipaleNombre": 2
+      },
+      {
+        "datMaj": "2026-03-09T11:54:28.000+01:00",
+        "codeTypeTerritoire": "NAT",
+        "codeTerritoire": "FR",
+        "libTerritoire": "France",
+        "codeTypeActivite": "ROME",
+        "codeActivite": "A1440",
+        "libActivite": "Cultivateur urbain / Cultivatrice urbaine",
+        "codeNomenclature": "SPECIF_FORM_EMPL",
+        "libNomenclature": "Lien formation - métier",
+        "codeTypePeriode": "ANNEE",
+        "codePeriode": "2024",
+        "libPeriode": "ANNEE 2024",
+        "valeurPrincipaleDecimale": -1.26,
+        "valeurPrincipaleNombre": 1
+      }
+    ]
+  }
+}
