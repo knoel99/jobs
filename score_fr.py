@@ -106,17 +106,27 @@ def get_description(slug):
             data = json.load(f)
         if isinstance(data, dict):
             parts = []
-            if data.get("definition"):
-                parts.append(f"Définition : {data['definition']}")
-            if data.get("acces"):
-                parts.append(f"Accès au métier : {data['acces']}")
-            if data.get("competences"):
-                comps = data["competences"]
-                if isinstance(comps, list):
+            metier = data.get("metier", {})
+            if isinstance(metier, dict):
+                if metier.get("definition"):
+                    parts.append(f"Définition : {metier['definition']}")
+                if metier.get("accesEmploi"):
+                    parts.append(f"Accès au métier : {metier['accesEmploi']}")
+                comps = metier.get("competencesMobilisees", [])
+                if comps:
                     parts.append("Compétences : " + ", ".join(
-                        c.get("libelle", str(c)) for c in comps))
-            return "\n\n".join(parts) if parts else json.dumps(data, ensure_ascii=False)
-        return json.dumps(data, ensure_ascii=False)
+                        c.get("libelle", str(c)) for c in comps if isinstance(c, dict)))
+                ctx = metier.get("contextesTravail", [])
+                if ctx:
+                    parts.append("Contexte de travail : " + ", ".join(
+                        c.get("libelle", str(c)) for c in ctx if isinstance(c, dict)))
+                if metier.get("emploiCadre") is not None:
+                    parts.append(f"Emploi cadre : {'Oui' if metier['emploiCadre'] else 'Non'}")
+                if metier.get("transitionNumerique") is not None:
+                    parts.append(f"Transition numérique : {'Oui' if metier['transitionNumerique'] else 'Non'}")
+            # Fallback: données brutes si pas de clé metier
+            return "\n\n".join(parts) if parts else json.dumps(data, ensure_ascii=False)[:5000]
+        return json.dumps(data, ensure_ascii=False)[:5000]
 
     # Sinon essayer le Markdown
     md_path = os.path.join("pages_fr", f"{slug}.md")
@@ -135,37 +145,52 @@ def get_description(slug):
     return None
 
 
-def score_occupation(client, text, title, code_rome, model):
+def score_occupation(client, text, title, code_rome, model, max_retries=4):
     """Envoyer un métier au LLM et parser la réponse structurée."""
     user_msg = f"Métier : {title} (Code ROME : {code_rome})\n\n{text}"
 
-    response = client.post(
-        API_URL,
-        headers={
-            "Authorization": f"Bearer {os.environ['OPENROUTER_API_KEY']}",
-        },
-        json={
-            "model": model,
-            "messages": [
-                {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": user_msg},
-            ],
-            "temperature": 0.2,
-        },
-        timeout=60,
-    )
-    response.raise_for_status()
-    content = response.json()["choices"][0]["message"]["content"]
+    for attempt in range(max_retries + 1):
+        try:
+            response = client.post(
+                API_URL,
+                headers={
+                    "Authorization": f"Bearer {os.environ['OPENROUTER_API_KEY']}",
+                },
+                json={
+                    "model": model,
+                    "messages": [
+                        {"role": "system", "content": SYSTEM_PROMPT},
+                        {"role": "user", "content": user_msg},
+                    ],
+                    "temperature": 0.2,
+                },
+                timeout=60,
+            )
+            if response.status_code in (429, 403, 502, 503):
+                wait = 2 ** (attempt + 1)
+                print(f"{response.status_code}, retry dans {wait}s...", end=" ", flush=True)
+                time.sleep(wait)
+                continue
+            response.raise_for_status()
+            content = response.json()["choices"][0]["message"]["content"]
 
-    # Nettoyer les code fences markdown
-    content = content.strip()
-    if content.startswith("```"):
-        content = content.split("\n", 1)[1]
-        if content.endswith("```"):
-            content = content[:-3]
-        content = content.strip()
+            # Nettoyer les code fences markdown
+            content = content.strip()
+            if content.startswith("```"):
+                content = content.split("\n", 1)[1]
+                if content.endswith("```"):
+                    content = content[:-3]
+                content = content.strip()
 
-    return json.loads(content)
+            return json.loads(content)
+        except httpx.HTTPError:
+            if attempt < max_retries:
+                wait = 2 ** (attempt + 1)
+                print(f"erreur réseau, retry dans {wait}s...", end=" ", flush=True)
+                time.sleep(wait)
+            else:
+                raise
+    raise RuntimeError(f"Échec après {max_retries} retries")
 
 
 def main():
