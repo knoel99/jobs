@@ -56,12 +56,15 @@ def rate_limit_wait(api_name):
     _last_call[api_name] = time.monotonic()
 
 
-def api_call_with_retry(client, url, headers, api_name, max_retries=3):
+def api_call_with_retry(client, method, url, headers, api_name, json_body=None, params=None, max_retries=3):
     """Appel API avec respect du rate limit et retry sur 429."""
     for attempt in range(max_retries + 1):
         rate_limit_wait(api_name)
         try:
-            resp = client.get(url, headers=headers, timeout=15)
+            if method == "POST":
+                resp = client.post(url, headers=headers, json=json_body, timeout=15)
+            else:
+                resp = client.get(url, headers=headers, params=params, timeout=15)
             if resp.status_code == 429:
                 retry_after = float(resp.headers.get("Retry-After", 2))
                 wait = max(retry_after, RATE_LIMITS.get(api_name, 1.1) * 2)
@@ -70,7 +73,9 @@ def api_call_with_retry(client, url, headers, api_name, max_retries=3):
                 continue
             resp.raise_for_status()
             return resp
-        except httpx.HTTPStatusError:
+        except httpx.HTTPStatusError as e:
+            if e.response.status_code in (404, 400):
+                return None  # Pas de données pour ce code ROME
             raise
         except httpx.HTTPError as e:
             if attempt < max_retries:
@@ -104,6 +109,8 @@ def get_access_token():
                 "api_rome-metiersv1",
                 "api_rome-fiches-metiersv1",
                 "api_rome-competencesv1",
+                "api_stats-offres-demandes-emploiv1",
+                "offresetdemandesemploi",
                 "nomenclatureRome",
             ]),
         },
@@ -123,9 +130,14 @@ def scrape_api(occupations, args):
     client = httpx.Client()
     headers = {"Authorization": f"Bearer {token}", "Accept": "application/json"}
 
-    print(f"\nRate limits : ROME APIs = 1 req/s chacune")
-    print(f"Temps estimé : ~{len(occupations) * 2.5:.0f}s "
-          f"({len(occupations)} métiers × ~2.5s/métier)\n")
+    # Base URLs
+    ROME_FICHES_BASE = "https://api.francetravail.io/partenaire/rome-fiches-metiers/v1/fiches_metiers/fiche_metier"
+    ROME_METIERS_BASE = "https://api.francetravail.io/partenaire/rome-metiers/v1/metiers/metier"
+    STATS_BASE = "https://api.francetravail.io/partenaire/stats-offres-demandes-emploi"
+
+    print(f"\nRate limits : ROME=1 req/s, Stats=10 req/s")
+    print(f"Temps estimé : ~{len(occupations) * 3:.0f}s "
+          f"({len(occupations)} métiers × ~3s/métier)\n")
 
     for i, occ in enumerate(occupations):
         slug = occ["slug"]
@@ -143,8 +155,8 @@ def scrape_api(occupations, args):
 
             # 1. Fiche métier complète (ROME Fiches métiers : 1 req/s)
             resp = api_call_with_retry(
-                client,
-                f"https://api.francetravail.io/partenaire/rome-fiches-metiers/v1/fiches_metiers/fiche_metier/{code}",
+                client, "GET",
+                f"{ROME_FICHES_BASE}/{code}",
                 headers, "rome_fiches",
             )
             if resp:
@@ -152,17 +164,82 @@ def scrape_api(occupations, args):
 
             # 2. Métier info (ROME Métiers : 1 req/s)
             resp = api_call_with_retry(
-                client,
-                f"https://api.francetravail.io/partenaire/rome-metiers/v1/metiers/metier/{code}",
+                client, "GET",
+                f"{ROME_METIERS_BASE}/{code}",
                 headers, "rome_metiers",
             )
             if resp:
                 result["metier"] = resp.json()
 
+            # 3. Salaires nationaux par ROME (Marché du travail : 10 req/s)
+            resp = api_call_with_retry(
+                client, "GET",
+                f"{STATS_BASE}/v1/indicateur/salaire-rome-fap/NAT/FR",
+                headers, "marche_travail",
+                params={"codeRome": code},
+            )
+            if resp:
+                result["salaires"] = resp.json()
+
+            # 4. Demandeurs d'emploi nationaux (Marché du travail : 10 req/s)
+            resp = api_call_with_retry(
+                client, "POST",
+                f"{STATS_BASE}/v1/indicateur/stat-demandeurs",
+                headers, "marche_travail",
+                json_body={
+                    "codeTypeTerritoire": "NAT",
+                    "codeTerritoire": "FR",
+                    "codeTypeActivite": "ROME",
+                    "codeActivite": code,
+                    "codeTypePeriode": "TRIMESTRE",
+                    "codeTypeNomenclature": "CATCAND",
+                    "dernierePeriode": True,
+                },
+            )
+            if resp:
+                result["demandeurs"] = resp.json()
+
+            # 5. Offres d'emploi (Marché du travail : 10 req/s)
+            resp = api_call_with_retry(
+                client, "POST",
+                f"{STATS_BASE}/v1/indicateur/stat-offres",
+                headers, "marche_travail",
+                json_body={
+                    "codeTypeTerritoire": "NAT",
+                    "codeTerritoire": "FR",
+                    "codeTypeActivite": "ROME",
+                    "codeActivite": code,
+                    "codeTypePeriode": "TRIMESTRE",
+                    "codeTypeNomenclature": "ORIGINEOFF",
+                    "dernierePeriode": True,
+                },
+            )
+            if resp:
+                result["offres"] = resp.json()
+
+            # 6. Tensions recrutement (Marché du travail : 10 req/s)
+            resp = api_call_with_retry(
+                client, "POST",
+                f"{STATS_BASE}/v1/indicateur/stat-perspective-employeur",
+                headers, "marche_travail",
+                json_body={
+                    "codeTypeTerritoire": "NAT",
+                    "codeTerritoire": "FR",
+                    "codeTypeActivite": "ROME",
+                    "codeActivite": code,
+                    "codeTypePeriode": "ANNEE",
+                    "codeTypeNomenclature": "TYPE_TENSION",
+                    "dernierePeriode": True,
+                },
+            )
+            if resp:
+                result["tensions"] = resp.json()
+
             with open(out_path, "w") as f:
                 json.dump(result, f, ensure_ascii=False, indent=2)
 
-            print("OK")
+            apis_ok = [k for k in result.keys()]
+            print(f"OK ({', '.join(apis_ok)})")
         except Exception as e:
             print(f"ERREUR: {e}")
 
