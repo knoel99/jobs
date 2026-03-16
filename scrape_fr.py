@@ -57,19 +57,25 @@ def rate_limit_wait(api_name):
 
 
 def api_call_with_retry(client, method, url, headers, api_name, json_body=None, params=None, max_retries=3):
-    """Appel API avec respect du rate limit et retry sur 429."""
+    """Appel API avec respect du rate limit et retry sur 429/401."""
     for attempt in range(max_retries + 1):
         rate_limit_wait(api_name)
+        # Toujours utiliser des headers avec un token frais
+        fresh_headers = _token_manager.get_headers()
         try:
             if method == "POST":
-                resp = client.post(url, headers=headers, json=json_body, timeout=15)
+                resp = client.post(url, headers=fresh_headers, json=json_body, timeout=15)
             else:
-                resp = client.get(url, headers=headers, params=params, timeout=15)
+                resp = client.get(url, headers=fresh_headers, params=params, timeout=15)
             if resp.status_code == 429:
                 retry_after = float(resp.headers.get("Retry-After", 2))
                 wait = max(retry_after, RATE_LIMITS.get(api_name, 1.1) * 2)
                 print(f"429 rate limit, attente {wait:.1f}s...", end=" ", flush=True)
                 time.sleep(wait)
+                continue
+            if resp.status_code == 401:
+                print("401 token expiré, rafraîchissement...", end=" ", flush=True)
+                _token_manager.refresh()
                 continue
             resp.raise_for_status()
             return resp
@@ -91,44 +97,73 @@ def api_call_with_retry(client, method, url, headers, api_name, json_body=None, 
 # Mode API : France Travail (ex-Emploi Store)
 # ---------------------------------------------------------------------------
 
-def get_access_token():
-    """Obtenir un token OAuth2 depuis l'API France Travail."""
-    client_id = os.environ.get("FRANCE_TRAVAIL_CLIENT_ID")
-    client_secret = os.environ.get("FRANCE_TRAVAIL_CLIENT_SECRET")
-    if not client_id or not client_secret:
-        return None
+class TokenManager:
+    """Gère le token OAuth2 avec rafraîchissement automatique."""
 
-    resp = httpx.post(
-        "https://entreprise.francetravail.fr/connexion/oauth2/access_token",
-        params={"realm": "/partenaire"},
-        data={
-            "grant_type": "client_credentials",
-            "client_id": client_id,
-            "client_secret": client_secret,
-            "scope": " ".join([
-                "api_rome-metiersv1",
-                "api_rome-fiches-metiersv1",
-                "api_rome-competencesv1",
-                "api_stats-offres-demandes-emploiv1",
-                "offresetdemandesemploi",
-                "nomenclatureRome",
-            ]),
-        },
-    )
-    resp.raise_for_status()
-    return resp.json()["access_token"]
+    def __init__(self):
+        self.token = None
+        self.expires_at = 0  # timestamp monotonic
+
+    def get_token(self):
+        """Retourne un token valide, en le rafraîchissant si nécessaire."""
+        now = time.monotonic()
+        # Rafraîchir si expire dans moins de 60s
+        if self.token and now < self.expires_at - 60:
+            return self.token
+        return self.refresh()
+
+    def refresh(self):
+        """Obtenir un nouveau token OAuth2."""
+        client_id = os.environ.get("FRANCE_TRAVAIL_CLIENT_ID")
+        client_secret = os.environ.get("FRANCE_TRAVAIL_CLIENT_SECRET")
+        if not client_id or not client_secret:
+            return None
+
+        print("Authentification OAuth2...", end=" ", flush=True)
+        resp = httpx.post(
+            "https://entreprise.francetravail.fr/connexion/oauth2/access_token",
+            params={"realm": "/partenaire"},
+            data={
+                "grant_type": "client_credentials",
+                "client_id": client_id,
+                "client_secret": client_secret,
+                "scope": " ".join([
+                    "api_rome-metiersv1",
+                    "api_rome-fiches-metiersv1",
+                    "api_rome-competencesv1",
+                    "api_stats-offres-demandes-emploiv1",
+                    "offresetdemandesemploi",
+                    "nomenclatureRome",
+                ]),
+            },
+        )
+        resp.raise_for_status()
+        data = resp.json()
+        self.token = data["access_token"]
+        # expires_in est en secondes (typiquement 1500s)
+        self.expires_at = time.monotonic() + data.get("expires_in", 1500)
+        print(f"OK (expire dans {data.get('expires_in', 1500)}s)")
+        return self.token
+
+    def get_headers(self):
+        """Retourne les headers avec un token valide."""
+        token = self.get_token()
+        return {"Authorization": f"Bearer {token}", "Accept": "application/json"}
+
+
+_token_manager = TokenManager()
 
 
 def scrape_api(occupations, args):
     """Scraper les fiches via l'API REST France Travail (rate-limited)."""
-    token = get_access_token()
+    token = _token_manager.get_token()
     if not token:
         print("ERREUR : FRANCE_TRAVAIL_CLIENT_ID / CLIENT_SECRET manquants dans .env")
         print("Basculer vers --mode html ou configurer les credentials.")
         return
 
     client = httpx.Client()
-    headers = {"Authorization": f"Bearer {token}", "Accept": "application/json"}
+    headers = _token_manager.get_headers()  # headers initiaux (seront rafraîchis par api_call_with_retry)
 
     # Base URLs
     ROME_FICHES_BASE = "https://api.francetravail.io/partenaire/rome-fiches-metiers/v1/fiches_metiers/fiche_metier"
