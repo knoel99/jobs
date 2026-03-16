@@ -10,9 +10,11 @@ Usage:
     uv run python score_fr.py
     uv run python score_fr.py --model google/gemini-3-flash-preview
     uv run python score_fr.py --start 0 --end 10
+    uv run python score_fr.py --concurrency 10
 """
 
 import argparse
+import asyncio
 import json
 import os
 import time
@@ -145,13 +147,24 @@ def get_description(slug):
     return None
 
 
-def score_occupation(client, text, title, code_rome, model, max_retries=4):
+def parse_llm_response(content):
+    """Nettoyer et parser la réponse JSON du LLM."""
+    content = content.strip()
+    if content.startswith("```"):
+        content = content.split("\n", 1)[1]
+        if content.endswith("```"):
+            content = content[:-3]
+        content = content.strip()
+    return json.loads(content)
+
+
+async def score_occupation(client, text, title, code_rome, model, max_retries=4):
     """Envoyer un métier au LLM et parser la réponse structurée."""
     user_msg = f"Métier : {title} (Code ROME : {code_rome})\n\n{text}"
 
     for attempt in range(max_retries + 1):
         try:
-            response = client.post(
+            response = await client.post(
                 API_URL,
                 headers={
                     "Authorization": f"Bearer {os.environ['OPENROUTER_API_KEY']}",
@@ -168,37 +181,67 @@ def score_occupation(client, text, title, code_rome, model, max_retries=4):
             )
             if response.status_code in (429, 403, 502, 503):
                 wait = 2 ** (attempt + 1)
-                print(f"{response.status_code}, retry dans {wait}s...", end=" ", flush=True)
-                time.sleep(wait)
+                print(f"  {title}: {response.status_code}, retry dans {wait}s...", flush=True)
+                await asyncio.sleep(wait)
                 continue
             response.raise_for_status()
             content = response.json()["choices"][0]["message"]["content"]
-
-            # Nettoyer les code fences markdown
-            content = content.strip()
-            if content.startswith("```"):
-                content = content.split("\n", 1)[1]
-                if content.endswith("```"):
-                    content = content[:-3]
-                content = content.strip()
-
-            return json.loads(content)
+            return parse_llm_response(content)
         except httpx.HTTPError:
             if attempt < max_retries:
                 wait = 2 ** (attempt + 1)
-                print(f"erreur réseau, retry dans {wait}s...", end=" ", flush=True)
-                time.sleep(wait)
+                print(f"  {title}: erreur réseau, retry dans {wait}s...", flush=True)
+                await asyncio.sleep(wait)
             else:
                 raise
-    raise RuntimeError(f"Échec après {max_retries} retries")
+    raise RuntimeError(f"Échec après {max_retries} retries pour {title}")
 
 
-def main():
+async def process_one(sem, client, occ, model, scores, errors, counter, total, save_lock):
+    """Traiter un métier avec contrôle de concurrence."""
+    slug = occ["slug"]
+
+    if slug in scores:
+        return
+
+    text = get_description(slug)
+    if not text:
+        return
+
+    async with sem:
+        idx = counter["done"] + 1
+        counter["done"] = idx
+        print(f"  [{idx}/{total}] {occ['title']}...", end=" ", flush=True)
+
+        try:
+            result = await score_occupation(
+                client, text, occ["title"], occ["code_rome"], model
+            )
+            scores[slug] = {
+                "slug": slug,
+                "title": occ["title"],
+                "code_rome": occ["code_rome"],
+                **result,
+            }
+            print(f"exposition={result['exposure']}")
+        except Exception as e:
+            print(f"ERREUR: {e}")
+            errors.append(slug)
+
+        # Checkpoint régulier (protégé par lock pour éviter les écritures concurrentes)
+        if counter["done"] % 10 == 0:
+            async with save_lock:
+                with open(OUTPUT_FILE, "w") as f:
+                    json.dump(list(scores.values()), f, ensure_ascii=False, indent=2)
+
+
+async def main_async():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", default=DEFAULT_MODEL)
     parser.add_argument("--start", type=int, default=0)
     parser.add_argument("--end", type=int, default=None)
-    parser.add_argument("--delay", type=float, default=0.5)
+    parser.add_argument("--concurrency", type=int, default=5,
+                        help="Nombre de requêtes parallèles (défaut: 5)")
     parser.add_argument("--force", action="store_true",
                         help="Re-scorer même si déjà en cache")
     args = parser.parse_args()
@@ -215,48 +258,27 @@ def main():
             for entry in json.load(f):
                 scores[entry["slug"]] = entry
 
+    to_process = [occ for occ in subset if occ["slug"] not in scores]
+
     print(f"Scoring {len(subset)} métiers avec {args.model}")
     print(f"Déjà en cache : {len(scores)}")
+    print(f"Restant : {len(to_process)} (concurrence: {args.concurrency})")
 
     errors = []
-    client = httpx.Client()
+    counter = {"done": 0}
+    sem = asyncio.Semaphore(args.concurrency)
+    save_lock = asyncio.Lock()
 
-    for i, occ in enumerate(subset):
-        slug = occ["slug"]
+    async with httpx.AsyncClient() as client:
+        tasks = [
+            process_one(sem, client, occ, args.model, scores, errors, counter, len(to_process), save_lock)
+            for occ in to_process
+        ]
+        await asyncio.gather(*tasks)
 
-        if slug in scores:
-            continue
-
-        text = get_description(slug)
-        if not text:
-            print(f"  [{i+1}] PASSE {slug} (pas de données)")
-            continue
-
-        print(f"  [{i+1}/{len(subset)}] {occ['title']}...", end=" ", flush=True)
-
-        try:
-            result = score_occupation(
-                client, text, occ["title"], occ["code_rome"], args.model
-            )
-            scores[slug] = {
-                "slug": slug,
-                "title": occ["title"],
-                "code_rome": occ["code_rome"],
-                **result,
-            }
-            print(f"exposition={result['exposure']}")
-        except Exception as e:
-            print(f"ERREUR: {e}")
-            errors.append(slug)
-
-        # Sauvegarder après chaque score (checkpoint incrémental)
-        with open(OUTPUT_FILE, "w") as f:
-            json.dump(list(scores.values()), f, ensure_ascii=False, indent=2)
-
-        if i < len(subset) - 1:
-            time.sleep(args.delay)
-
-    client.close()
+    # Sauvegarde finale
+    with open(OUTPUT_FILE, "w") as f:
+        json.dump(list(scores.values()), f, ensure_ascii=False, indent=2)
 
     print(f"\nTerminé. {len(scores)} métiers scorés, {len(errors)} erreurs.")
     if errors:
@@ -277,4 +299,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main_async())
