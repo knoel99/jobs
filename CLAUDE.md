@@ -107,10 +107,27 @@ Le BLS américain n'a pas d'équivalent exact en France, mais on peut reconstitu
 - Adapter les catégories de métiers aux familles ROME
 - Adapter les niveaux d'éducation au système français
 
-### Priorité d'implémentation
+### Progression
 
-1. **Obtenir les données ROME** via l'API France Travail (créer un compte développeur)
-2. **Croiser avec les données salariales** DARES/INSEE
-3. **Adapter le scoring** (prompt + calibration)
-4. **Adapter le frontend** (traduction + EUR)
-5. **Générer la visualisation** pour ~530 métiers français
+| Étape | Script | Statut |
+|---|---|---|
+| 1. Liste des métiers ROME | `fetch_all_rome.py` | **Fait** — 1584 métiers dans `occupations_fr.json` |
+| 2. Scraping données API | `scrape_fr.py` | **Fait** — 1584 fiches JSON dans `html_fr/` (OAuth2 avec refresh auto) |
+| 3. Générer le CSV | `make_csv_fr.py` | **À faire** |
+| 4. Scoring IA | `score_fr.py` | **À faire** — ~1584 appels LLM via OpenRouter |
+| 5. Build data.json | `build_site_data_fr.py` | **À faire** |
+| 6. Frontend FR | `site_fr/index.html` | **À faire** — traduction + EUR |
+
+### Prochaines commandes
+
+```bash
+uv run python make_csv_fr.py              # 3. Parser JSON → occupations_fr.csv
+uv run python score_fr.py                 # 4. Scorer exposition IA (reprise incrémentale via scores_fr.json)
+uv run python build_site_data_fr.py       # 5. Fusionner CSV + scores → site_fr/data.json
+```
+
+### Notes techniques
+
+- **Token OAuth2** : expire après ~1500s. `scrape_fr.py` rafraîchit automatiquement le token avant expiration et retente sur 401.
+- **Cache** : `scrape_fr.py` et `score_fr.py` supportent la reprise — relancer sans `--force` reprend là où c'est resté.
+- **1584 métiers** (pas 530) : le ROME 4.0 a beaucoup plus de fiches que les anciennes versions.
